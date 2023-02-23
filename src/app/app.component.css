@@ -1,25 +1,30 @@
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '~@angular/material/prebuilt-themes/';
   
-.example-form {
-  min-width: 150px;
-  max-width: 500px;
-  width: 100%;
-}
-  
-.example-full-width {
-  width: 100%;
+
+
+
+mat-grid-list {
+  width: 100vw;
+  height: 100vh;
 }
 
-.example-button-row button,
-.example-button-row a {
-  margin-right: 8px;
+.card-content {
+  background: rgba(105, 197, 250, 0.26);
+  height: 10em;
+  display: flex;
+  align-items: center;
+
 }
 
-.example-disabled {
-  display: inline-block;
+.divider{
+  width:7em;
+  height:auto;
+  display:inline-block;
 }
 
-.example-card {
-  max-width: 400px;
-  margin-bottom: 8px;
+
+/* CSS */
+.button {
+  background-color: #1899D6;
+ 
 }
