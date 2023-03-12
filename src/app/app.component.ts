@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { BrilgevondenComponent } from './brilgevonden/brilgevonden.component';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +9,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'bril-kwijt';
+  constructor(private router:Router) {}
+
+  goToBrilGevonden() {
+    console.log('/brilgevonden');
+    this.router.navigate(['/brilgevonden']);
+
+  }
 
 }
 

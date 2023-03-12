@@ -7,7 +7,7 @@
   <mat-grid-tile>
     <mat-card >
       <mat-card-content class="card-content">
-        <button mat-fab extended class="button">
+        <button mat-fab extended routerLink="['/brilgevonden']" (click)="goToBrilGevonden()">
           <mat-icon>arrow_right_alt</mat-icon>
           Bril gevonden?
         </button>
@@ -19,6 +19,7 @@
         </button>
       </mat-card-content>
     </mat-card>
+    <router-outlet></router-outlet>
   </mat-grid-tile>
 </mat-grid-list>
 

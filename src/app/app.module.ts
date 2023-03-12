@@ -10,12 +10,14 @@ import { MatButtonModule} from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { MatIconModule,  } from '@angular/material/icon';
-import {MatGridListModule} from '@angular/material/grid-list'
+import {MatGridListModule} from '@angular/material/grid-list';
+import { BrilgevondenComponent } from './brilgevonden/brilgevonden.component'
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    BrilgevondenComponent
   ],
   imports: [
     BrowserModule,
