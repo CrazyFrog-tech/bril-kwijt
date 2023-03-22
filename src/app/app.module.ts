@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
 import { NgModule } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
@@ -13,13 +14,15 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { BrilgevondenComponent } from './brilgevonden/brilgevonden.component';
 import { HomescreenComponent } from './homescreen/homescreen.component';
 import {MaterialModule} from './material-module';
+import { UploadImagesComponent } from './upload-images/upload-images.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     BrilgevondenComponent,
-    HomescreenComponent
+    HomescreenComponent,
+    UploadImagesComponent
   ],
   imports: [
     BrowserModule,
@@ -31,6 +34,7 @@ import {MaterialModule} from './material-module';
     MatGridListModule,
     MatToolbarModule,
     MaterialModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
