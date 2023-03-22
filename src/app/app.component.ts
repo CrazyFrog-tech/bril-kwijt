@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BrilgevondenComponent } from './brilgevonden/brilgevonden.component';
 
@@ -7,15 +7,13 @@ import { BrilgevondenComponent } from './brilgevonden/brilgevonden.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'bril-kwijt';
+export class AppComponent implements OnInit {
   constructor(private router:Router) {}
-
-  goToBrilGevonden() {
-    console.log('/brilgevonden');
-    this.router.navigate(['/brilgevonden']);
-
+  ngOnInit(): void {
+    this.router.navigate(['/homescreen']);
   }
+
+  
 
 }
 

@@ -1,0 +1,30 @@
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+  
+
+
+
+mat-grid-list {
+  width: 100vw;
+  height: 100vh;
+}
+
+.card-content {
+  background: rgba(105, 197, 250, 0.26);
+  height: 10em;
+  display: flex;
+  align-items: center;
+
+}
+
+.divider{
+  width:7em;
+  height:auto;
+  display:inline-block;
+}
+
+
+/* CSS */
+.button {
+  background-color: #1899D6;
+ 
+}
