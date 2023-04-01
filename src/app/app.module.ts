@@ -7,18 +7,17 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { NgModule } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule} from '@angular/material/button';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import { MatIconModule,  } from '@angular/material/icon';
-import {MatGridListModule} from '@angular/material/grid-list';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { BrilgevondenComponent } from './brilgevonden/brilgevonden.component';
 import { HomescreenComponent } from './homescreen/homescreen.component';
-import {MaterialModule} from './material-module';
+import { MaterialModule } from './material-module';
 import { UploadImagesComponent } from './upload-images/upload-images.component';
 import { AutocompleteMapsComponent } from './autocomplete-maps/autocomplete-maps.component';
 import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/google-maps-autocomplete';
-import {AgmCoreModule} from '@agm/core';
-
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -26,7 +25,7 @@ import {AgmCoreModule} from '@agm/core';
     BrilgevondenComponent,
     HomescreenComponent,
     UploadImagesComponent,
-    AutocompleteMapsComponent
+    AutocompleteMapsComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,12 +41,10 @@ import {AgmCoreModule} from '@agm/core';
     MatGoogleMapsAutocompleteModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyC5GlLUadijlWkWIRdpFDaYhHyVEWrpENc',
-      libraries: ['places']
+      libraries: ['places'],
     }),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
-
-
+export class AppModule {}

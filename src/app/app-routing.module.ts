@@ -5,15 +5,14 @@ import { BrilgevondenComponent } from './brilgevonden/brilgevonden.component';
 import { HomescreenComponent } from './homescreen/homescreen.component';
 
 const routes: Routes = [
-  {path: '', component: AppComponent  },
-  {path: 'brilgevonden', component: BrilgevondenComponent  },
-  {path: 'homescreen', component: HomescreenComponent  }
-
-]; 
+  { path: '', component: AppComponent },
+  { path: 'brilgevonden', component: BrilgevondenComponent },
+  { path: 'homescreen', component: HomescreenComponent },
+];
 
 // configures NgModule imports and exports
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

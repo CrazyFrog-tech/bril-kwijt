@@ -1,7 +1,4 @@
-@import '~@angular/material/prebuilt-themes/indigo-pink.css';
-  
-
-
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 mat-grid-list {
   width: 100vw;
@@ -13,18 +10,15 @@ mat-grid-list {
   height: 10em;
   display: flex;
   align-items: center;
-
 }
 
-.divider{
-  width:7em;
-  height:auto;
-  display:inline-block;
+.divider {
+  width: 7em;
+  height: auto;
+  display: inline-block;
 }
-
 
 /* CSS */
 .button {
-  background-color: #1899D6;
- 
+  background-color: #1899d6;
 }

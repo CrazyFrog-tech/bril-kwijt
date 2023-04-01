@@ -3,7 +3,8 @@
   <mat-toolbar class="progress-bar">
     <mat-progress-bar
       color="accent"
-      [value]="progressInfo.value"></mat-progress-bar>
+      [value]="progressInfo.value"
+    ></mat-progress-bar>
     <span class="progress">{{ progressInfo.value }}%</span>
   </mat-toolbar>
 </div>
@@ -14,17 +15,18 @@
       <input
         matInput
         [value]="
-        selectedFileNames.length
-        ? selectedFileNames.join(', ')
-        : 'Select Images'
+          selectedFileNames.length
+            ? selectedFileNames.join(', ')
+            : 'Select Images'
         "
-        />
+      />
 
       <button
         mat-flat-button
         color="primary"
         [disabled]="!selectedFiles"
-        (click)="uploadFiles()">
+        (click)="uploadFiles()"
+      >
         Upload
       </button>
     </mat-toolbar>
@@ -36,7 +38,7 @@
       accept="image/*"
       multiple
       (change)="selectFiles($event)"
-      />
+    />
   </div>
 </mat-form-field>
 
@@ -45,7 +47,7 @@
 </div>
 
 <div *ngIf="message.length" class="message">
-  <ul *ngFor="let msg of message; let i= index">
+  <ul *ngFor="let msg of message; let i = index">
     <li>{{ msg }}</li>
   </ul>
 </div>
@@ -57,14 +59,17 @@
   <mat-card-content>
     <mat-grid-list cols="2" rowHeight="60px">
       <div *ngFor="let image of imageInfos | async">
-        <mat-grid-tile><a href="{{ image.url }}" class="text-inside-grid">{{
+        <mat-grid-tile
+          ><a href="{{ image.url }}" class="text-inside-grid">{{
             image.name
-            }}</a></mat-grid-tile>
-        <mat-grid-tile><img
+          }}</a></mat-grid-tile
+        >
+        <mat-grid-tile
+          ><img
             src="{{ image.url }}"
             alt="{{ image.name }}"
             class="image-inside-grid"
-            /></mat-grid-tile>
+        /></mat-grid-tile>
       </div>
     </mat-grid-list>
   </mat-card-content>

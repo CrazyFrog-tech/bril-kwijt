@@ -1,27 +1,25 @@
 <mat-form-field appearance="fill">
-    <mat-label>Enter a date range</mat-label>
-    <mat-date-range-input [rangePicker]="picker">
-      <input matStartDate placeholder="Start date">
-      <input matEndDate placeholder="End date">
-    </mat-date-range-input>
-    <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
-    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-date-range-picker #picker></mat-date-range-picker>
+  <mat-label>Enter a date range</mat-label>
+  <mat-date-range-input [rangePicker]="picker">
+    <input matStartDate placeholder="Start date" />
+    <input matEndDate placeholder="End date" />
+  </mat-date-range-input>
+  <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-date-range-picker #picker></mat-date-range-picker>
+</mat-form-field>
+<p>
+  <app-autocomplete-maps></app-autocomplete-maps>
+</p>
+<p>
+  <mat-form-field appearance="outline">
+    <mat-label>Beschrijving</mat-label>
+    <input matInput placeholder="Placeholder" />
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    <mat-hint>Hint</mat-hint>
   </mat-form-field>
-  <p>
-    <app-autocomplete-maps></app-autocomplete-maps>
-  </p>
-  <p>
-    <mat-form-field appearance="outline">
-      <mat-label>Beschrijving</mat-label>
-      <input matInput placeholder="Placeholder">
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-      <mat-hint>Hint</mat-hint>
-    </mat-form-field>
-  </p>
-  <div class="container">
-    <app-upload-images></app-upload-images>
-  </div>
-  <button mat-flat-button color="primary" (click)="goHome()" >Upload</button>
-
-  
+</p>
+<div class="container">
+  <app-upload-images></app-upload-images>
+</div>
+<button mat-flat-button color="primary" (click)="goHome()">Upload</button>
