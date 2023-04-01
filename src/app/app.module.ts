@@ -15,6 +15,9 @@ import { BrilgevondenComponent } from './brilgevonden/brilgevonden.component';
 import { HomescreenComponent } from './homescreen/homescreen.component';
 import {MaterialModule} from './material-module';
 import { UploadImagesComponent } from './upload-images/upload-images.component';
+import { AutocompleteMapsComponent } from './autocomplete-maps/autocomplete-maps.component';
+import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/google-maps-autocomplete';
+import {AgmCoreModule} from '@agm/core';
 
 
 @NgModule({
@@ -22,7 +25,8 @@ import { UploadImagesComponent } from './upload-images/upload-images.component';
     AppComponent,
     BrilgevondenComponent,
     HomescreenComponent,
-    UploadImagesComponent
+    UploadImagesComponent,
+    AutocompleteMapsComponent
   ],
   imports: [
     BrowserModule,
@@ -35,6 +39,11 @@ import { UploadImagesComponent } from './upload-images/upload-images.component';
     MatToolbarModule,
     MaterialModule,
     HttpClientModule,
+    MatGoogleMapsAutocompleteModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyC5GlLUadijlWkWIRdpFDaYhHyVEWrpENc',
+      libraries: ['places']
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

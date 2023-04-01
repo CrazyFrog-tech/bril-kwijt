@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-brilgevonden',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./brilgevonden.component.css']
 })
 export class BrilgevondenComponent {
+  constructor(private router:Router) {}
+
+  goHome() {
+    console.log('/homescreen');
+    this.router.navigate(['/homescreen']);
+
+  }
 
 }

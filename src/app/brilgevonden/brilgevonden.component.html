@@ -9,12 +9,7 @@
     <mat-date-range-picker #picker></mat-date-range-picker>
   </mat-form-field>
   <p>
-    <mat-form-field appearance="outline">
-      <mat-label>Locatie</mat-label>
-      <input matInput placeholder="Placeholder">
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-      <mat-hint>Hint</mat-hint>
-    </mat-form-field>
+    <app-autocomplete-maps></app-autocomplete-maps>
   </p>
   <p>
     <mat-form-field appearance="outline">
@@ -27,4 +22,6 @@
   <div class="container">
     <app-upload-images></app-upload-images>
   </div>
+  <button mat-flat-button color="primary" (click)="goHome()" >Upload</button>
+
   
