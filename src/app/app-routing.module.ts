@@ -3,11 +3,13 @@ import { Routes, RouterModule } from '@angular/router'; // CLI imports router
 import { AppComponent } from './app.component';
 import { BrilgevondenComponent } from './brilgevonden/brilgevonden.component';
 import { HomescreenComponent } from './homescreen/homescreen.component';
+import { GevondenBrillenComponent } from './gevonden-brillen/gevonden-brillen.component';
 
 const routes: Routes = [
   { path: '', component: AppComponent },
   { path: 'brilgevonden', component: BrilgevondenComponent },
   { path: 'homescreen', component: HomescreenComponent },
+  { path: 'gevondenbrillen', component: GevondenBrillenComponent },
 ];
 
 // configures NgModule imports and exports

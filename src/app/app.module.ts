@@ -18,6 +18,7 @@ import { UploadImagesComponent } from './upload-images/upload-images.component';
 import { AutocompleteMapsComponent } from './autocomplete-maps/autocomplete-maps.component';
 import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/google-maps-autocomplete';
 import { AgmCoreModule } from '@agm/core';
+import { GevondenBrillenComponent } from './gevonden-brillen/gevonden-brillen.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { AgmCoreModule } from '@agm/core';
     HomescreenComponent,
     UploadImagesComponent,
     AutocompleteMapsComponent,
+    GevondenBrillenComponent,
   ],
   imports: [
     BrowserModule,

@@ -14,4 +14,8 @@ export class HomescreenComponent {
     console.log('/brilgevonden');
     this.router.navigate(['/brilgevonden']);
   }
+  goToGevondenBrillen() {
+    console.log('/gevondenbrillen');
+    this.router.navigate(['/gevondenbrillen']);
+  }
 }
