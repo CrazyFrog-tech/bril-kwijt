@@ -19,6 +19,7 @@ import { AutocompleteMapsComponent } from './autocomplete-maps/autocomplete-maps
 import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/google-maps-autocomplete';
 import { AgmCoreModule } from '@agm/core';
 import { GevondenBrillenComponent } from './gevonden-brillen/gevonden-brillen.component';
+import { BrilListItemComponent } from './bril-list-item/bril-list-item.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { GevondenBrillenComponent } from './gevonden-brillen/gevonden-brillen.co
     UploadImagesComponent,
     AutocompleteMapsComponent,
     GevondenBrillenComponent,
+    BrilListItemComponent,
   ],
   imports: [
     BrowserModule,

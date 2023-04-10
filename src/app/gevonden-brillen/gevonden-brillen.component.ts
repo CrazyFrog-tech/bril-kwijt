@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Brillen } from '../bril-list-item/Bril';
 
 export interface Section {
   name: string;
@@ -11,6 +12,7 @@ export interface Section {
   styleUrls: ['./gevonden-brillen.component.css'],
 })
 export class GevondenBrillenComponent {
+  brillen = Brillen;
   folders: Section[] = [
     {
       name: 'Photos',
