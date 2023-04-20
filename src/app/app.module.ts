@@ -20,6 +20,7 @@ import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/go
 import { AgmCoreModule } from '@agm/core';
 import { GevondenBrillenComponent } from './gevonden-brillen/gevonden-brillen.component';
 import { BrilListItemComponent } from './bril-list-item/bril-list-item.component';
+import { BrilAdvertentieComponent } from './bril-advertentie/bril-advertentie.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { BrilListItemComponent } from './bril-list-item/bril-list-item.component
     AutocompleteMapsComponent,
     GevondenBrillenComponent,
     BrilListItemComponent,
+    BrilAdvertentieComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Bril } from './Bril';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-bril-list-item',
@@ -8,4 +9,16 @@ import { Bril } from './Bril';
 })
 export class BrilListItemComponent {
   @Input() bril!: Bril;
+  constructor(private router: Router) {}
+
+  onListItemClicked(){
+    console.log('do the thing');
+    if(this.bril.id){
+      let id = this.bril.id;
+      this.router.navigate(['/briladvertentie', id]);
+    }
+
+
+
+  }
 }

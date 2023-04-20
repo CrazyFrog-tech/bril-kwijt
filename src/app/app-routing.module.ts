@@ -4,12 +4,15 @@ import { AppComponent } from './app.component';
 import { BrilgevondenComponent } from './brilgevonden/brilgevonden.component';
 import { HomescreenComponent } from './homescreen/homescreen.component';
 import { GevondenBrillenComponent } from './gevonden-brillen/gevonden-brillen.component';
+import { BrilAdvertentieComponent } from './bril-advertentie/bril-advertentie.component';
 
 const routes: Routes = [
   { path: '', component: AppComponent },
   { path: 'brilgevonden', component: BrilgevondenComponent },
   { path: 'homescreen', component: HomescreenComponent },
   { path: 'gevondenbrillen', component: GevondenBrillenComponent },
+  { path: 'briladvertentie/:id', component: BrilAdvertentieComponent },
+
 ];
 
 // configures NgModule imports and exports
