@@ -11,8 +11,7 @@ const routes: Routes = [
   { path: 'brilgevonden', component: BrilgevondenComponent },
   { path: 'homescreen', component: HomescreenComponent },
   { path: 'gevondenbrillen', component: GevondenBrillenComponent },
-  { path: 'briladvertentie/:id', component: BrilAdvertentieComponent },
-
+  { path: 'briladvertentie', component: BrilAdvertentieComponent },
 ];
 
 // configures NgModule imports and exports

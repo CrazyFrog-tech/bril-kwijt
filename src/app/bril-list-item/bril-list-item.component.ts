@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Bril } from './Bril';
 import { Router } from '@angular/router';
+import { BrilIdService } from '../services/bril-id.service';
 
 @Component({
   selector: 'app-bril-list-item',
@@ -9,16 +10,13 @@ import { Router } from '@angular/router';
 })
 export class BrilListItemComponent {
   @Input() bril!: Bril;
-  constructor(private router: Router) {}
+  constructor(private router: Router, private brilIdService: BrilIdService) {}
 
-  onListItemClicked(){
+  onListItemClicked() {
     console.log('do the thing');
-    if(this.bril.id){
-      let id = this.bril.id;
-      this.router.navigate(['/briladvertentie', id]);
+    if (this.bril.id) {
+      this.brilIdService.setId(this.bril.id);
+      this.router.navigate(['/briladvertentie']);
     }
-
-
-
   }
 }

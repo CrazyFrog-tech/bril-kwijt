@@ -21,6 +21,7 @@ import { AgmCoreModule } from '@agm/core';
 import { GevondenBrillenComponent } from './gevonden-brillen/gevonden-brillen.component';
 import { BrilListItemComponent } from './bril-list-item/bril-list-item.component';
 import { BrilAdvertentieComponent } from './bril-advertentie/bril-advertentie.component';
+import { BrilIdService } from './services/bril-id.service';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,7 @@ import { BrilAdvertentieComponent } from './bril-advertentie/bril-advertentie.co
       libraries: ['places'],
     }),
   ],
-  providers: [],
+  providers: [BrilIdService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
