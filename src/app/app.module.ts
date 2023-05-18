@@ -18,10 +18,12 @@ import { UploadImagesComponent } from './upload-images/upload-images.component';
 import { AutocompleteMapsComponent } from './autocomplete-maps/autocomplete-maps.component';
 import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/google-maps-autocomplete';
 import { AgmCoreModule } from '@agm/core';
-import { GevondenBrillenComponent } from './gevonden-brillen/gevonden-brillen.component';
+import { brillenLijstComponent } from './brillen-lijst/brillen-lijst.component';
 import { BrilListItemComponent } from './bril-list-item/bril-list-item.component';
 import { BrilAdvertentieComponent } from './bril-advertentie/bril-advertentie.component';
 import { BrilIdService } from './services/bril-id.service';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,7 @@ import { BrilIdService } from './services/bril-id.service';
     HomescreenComponent,
     UploadImagesComponent,
     AutocompleteMapsComponent,
-    GevondenBrillenComponent,
+    brillenLijstComponent,
     BrilListItemComponent,
     BrilAdvertentieComponent,
   ],
@@ -50,6 +52,8 @@ import { BrilIdService } from './services/bril-id.service';
       apiKey: 'AIzaSyC5GlLUadijlWkWIRdpFDaYhHyVEWrpENc',
       libraries: ['places'],
     }),
+    EffectsModule.forRoot([]),
+    StoreModule.forRoot({}, {}),
   ],
   providers: [BrilIdService],
   bootstrap: [AppComponent],

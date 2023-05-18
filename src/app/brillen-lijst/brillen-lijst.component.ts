@@ -3,9 +3,9 @@ import { Brillen } from '../bril-list-item/Bril';
 
 @Component({
   selector: 'app-gevonden-brillen',
-  templateUrl: './gevonden-brillen.component.html',
-  styleUrls: ['./gevonden-brillen.component.css'],
+  templateUrl: './brillen-lijst.component.html',
+  styleUrls: ['./brillen-lijst.component.css'],
 })
-export class GevondenBrillenComponent {
+export class brillenLijstComponent {
   brillen = Brillen;
 }
