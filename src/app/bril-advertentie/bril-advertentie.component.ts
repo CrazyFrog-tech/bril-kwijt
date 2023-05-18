@@ -16,7 +16,6 @@ export class BrilAdvertentieComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('bril Id is', this.id);
-    debugger;
     this.brilIdService.selectedId$.subscribe((value) => {
       this.id = value;
     });
