@@ -2,7 +2,6 @@ import { Component, Input } from '@angular/core';
 import { Bril } from './Bril';
 import { Router } from '@angular/router';
 import { BrilIdService } from '../services/bril-id.service';
-
 @Component({
   selector: 'app-bril-list-item',
   templateUrl: './bril-list-item.component.html',

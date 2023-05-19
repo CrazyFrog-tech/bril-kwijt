@@ -24,7 +24,6 @@ import { BrilAdvertentieComponent } from './bril-advertentie/bril-advertentie.co
 import { BrilIdService } from './services/bril-id.service';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { brilReducer } from './bril-list-item/state/bril.reducer';
 
 @NgModule({
   declarations: [
@@ -53,8 +52,6 @@ import { brilReducer } from './bril-list-item/state/bril.reducer';
       apiKey: 'AIzaSyC5GlLUadijlWkWIRdpFDaYhHyVEWrpENc',
       libraries: ['places'],
     }),
-    EffectsModule.forRoot([]),
-    StoreModule.forRoot({ bril: brilReducer }),
   ],
   providers: [BrilIdService],
   bootstrap: [AppComponent],

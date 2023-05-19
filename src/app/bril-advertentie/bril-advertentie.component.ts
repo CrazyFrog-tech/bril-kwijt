@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Bril, Brillen } from '../bril-list-item/Bril';
 import { BrilIdService } from '../services/bril-id.service';
+import { Store } from 'redux';
 
 @Component({
   selector: 'app-bril-advertentie',
@@ -15,7 +16,6 @@ export class BrilAdvertentieComponent implements OnInit {
   constructor(private brilIdService: BrilIdService) {}
 
   ngOnInit(): void {
-    console.log('bril Id is', this.id);
     this.brilIdService.selectedId$.subscribe((value) => {
       this.id = value;
     });
