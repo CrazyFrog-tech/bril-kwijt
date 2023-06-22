@@ -1,6 +1,6 @@
 <mat-form-field appearance="fill">
   <mat-label>Enter a date range</mat-label>
-  <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+  <mat-date-range-input [rangePicker]="picker">
     <input matStartDate formControlName="start" placeholder="Start date" />
     <input matEndDate formControlName="end" placeholder="End date" />
   </mat-date-range-input>
@@ -8,19 +8,21 @@
   <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
   <mat-date-range-picker #picker></mat-date-range-picker>
 </mat-form-field>
-<p>Selected range: {{range.value | json}}</p>
+<p></p>
 <p>
   <app-autocomplete-maps></app-autocomplete-maps>
 </p>
-<p>
-  <mat-form-field appearance="outline">
-    <mat-label>Beschrijving</mat-label>
-    <input matInput placeholder="Placeholder" />
-    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-    <mat-hint>Hint</mat-hint>
-  </mat-form-field>
-</p>
+    <form [formGroup]="formGroup"  class="form">
+
+      <mat-form-field appearance="outline">
+        <mat-label>Beschrijving</mat-label>
+        <input type="text" matInput placeholder="Placeholder" formControlName="description"/>
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        <mat-hint>Hint</mat-hint>
+      </mat-form-field>
+    </form>
+
 <div class="container">
   <app-upload-images></app-upload-images>
 </div>
-<button mat-flat-button color="primary" (click)="goHome()">Upload</button>
+<button mat-flat-button type="submit" color="primary" (click)="goHome()">Upload</button>
