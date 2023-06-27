@@ -12,17 +12,23 @@
 <p>
   <app-autocomplete-maps></app-autocomplete-maps>
 </p>
-    <form [formGroup]="formGroup"  class="form">
+<mat-form-field appearance="outline">
+  <mat-label>Beschrijving</mat-label>
+  <div [formGroup]="formGroup">
+    <input
+      type="text"
+      matInput
+      placeholder="Placeholder"
+      formControlName="description"
+    />
+  </div>
 
-      <mat-form-field appearance="outline">
-        <mat-label>Beschrijving</mat-label>
-        <input type="text" matInput placeholder="Placeholder" formControlName="description"/>
-        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-        <mat-hint>Hint</mat-hint>
-      </mat-form-field>
-    </form>
-
+  <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+  <mat-hint>Hint</mat-hint>
+</mat-form-field>
 <div class="container">
   <app-upload-images></app-upload-images>
 </div>
-<button mat-flat-button type="submit" color="primary" (click)="goHome()">Upload</button>
+<button mat-flat-button type="submit" color="primary" (click)="goHome()">
+  Upload
+</button>
