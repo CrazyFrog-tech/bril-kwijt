@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 @Injectable({providedIn:'root'})
 export class ApiService {
 
-  baseURL: string = "http://localhost:8082/brilkwijt/";
+  baseURL: string = "http://localhost:8083/brilkwijt/";
 
   constructor(private http: HttpClient) {
   }
@@ -18,8 +18,8 @@ export class ApiService {
 
   addFakeBril(fakebril:FakeBril): Observable<any> {
 
-    console.log(fakebril + "service")
-    return this.http.post(this.baseURL + 'description', fakebril);
+    console.log(fakebril)
+    return this.http.post<FakeBril>(this.baseURL + 'description', fakebril);
   }
 
 }

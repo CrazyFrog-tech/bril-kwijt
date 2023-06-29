@@ -35,7 +35,7 @@ export class BrilgevondenComponent {
     console.log(this.formGroup.controls['description'].value);
     this.apiService.addFakeBril(new FakeBril(description)).subscribe(
       data =>{
-        console.log('gello');
+        console.log(data);
       }
     )
     // DEBUG YHR POST METHOD WHY IT DOEN'T WORK

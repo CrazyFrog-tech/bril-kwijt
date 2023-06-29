@@ -1,3 +1,3 @@
 export class FakeBril {
-  constructor(private description: string){}
+  constructor(public description: string){}
 }
