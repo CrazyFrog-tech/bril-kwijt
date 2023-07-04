@@ -15,7 +15,12 @@ export class BrilgevondenComponent {
   post: any = '';
   formGroup = new FormGroup({
     description: new FormControl(''),
-  })
+  });
+
+  lostAtFormGroup = new FormGroup({
+    lostAt: new FormControl(new Date),
+
+  });
 
 
 
@@ -30,10 +35,11 @@ export class BrilgevondenComponent {
   goHome() {
     let description = '';
     description = this.formGroup.controls['description'].value as string;
+    let dateLostAt = this.lostAtFormGroup.controls['lostAt'].value as Date;
 
     console.log('/homescreen');
     console.log(this.formGroup.controls['description'].value);
-    this.apiService.addFakeBril(new FakeBril(description)).subscribe(
+    this.apiService.addFakeBril(new FakeBril(description, dateLostAt)).subscribe(
       data =>{
         console.log(data);
       }
