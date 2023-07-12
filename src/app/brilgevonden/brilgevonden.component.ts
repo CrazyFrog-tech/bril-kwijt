@@ -4,6 +4,7 @@ import {FormGroup, FormControl, FormsModule, ReactiveFormsModule, FormBuilder, V
 import { HttpClient } from '@angular/common/http';
 import { ApiService } from '../services/api.service';
 import { FakeBril } from './fakebril';
+import { Address } from './address';
 
 
 @Component({
@@ -19,8 +20,10 @@ export class BrilgevondenComponent {
 
   lostAtFormGroup = new FormGroup({
     lostAt: new FormControl(new Date),
-
   });
+
+  //TODO how are we gonna post it
+  // first get the information from the address with formgroup and formcontrols
 
 
 
