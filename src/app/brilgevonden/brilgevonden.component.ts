@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 import {FormGroup, FormControl, FormsModule, ReactiveFormsModule, FormBuilder, Validators} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ApiService } from '../services/api.service';
-import { FakeBril } from './fakebril';
-import { Address } from './address';
+import { FakeBril } from '../dao/fakebril';
+import { Address } from '../dao/address';
 
 
 @Component({
@@ -22,6 +22,13 @@ export class BrilgevondenComponent {
     lostAt: new FormControl(new Date),
   });
 
+  addressFormGroup = new FormGroup({
+    street: new FormControl(''),
+    houseNr: new FormControl(''),
+    zipCode: new FormControl(''),
+    city: new FormControl('')
+  })
+
   //TODO how are we gonna post it
   // first get the information from the address with formgroup and formcontrols
 
@@ -32,9 +39,6 @@ export class BrilgevondenComponent {
 
   }
 
-
-
-
   goHome() {
     let description = '';
     description = this.formGroup.controls['description'].value as string;
@@ -42,7 +46,9 @@ export class BrilgevondenComponent {
 
     console.log('/homescreen');
     console.log(this.formGroup.controls['description'].value);
-    this.apiService.addFakeBril(new FakeBril(description, dateLostAt)).subscribe(
+     let address = new Address("pijpkruidstraat", "100", "1562", "Krommenie");
+    let fakeBril = new FakeBril(description, dateLostAt, address)
+    this.apiService.addFakeBril(fakeBril).subscribe(
       data =>{
         console.log(data);
       }

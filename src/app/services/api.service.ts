@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { FakeBril } from '../brilgevonden/fakebril';
+import { FakeBril } from '../dao/fakebril';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
