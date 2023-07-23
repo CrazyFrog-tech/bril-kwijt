@@ -11,19 +11,17 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { BrilgevondenComponent } from './brilgevonden/brilgevonden.component';
-import { HomescreenComponent } from './homescreen/homescreen.component';
+import { BrilgevondenComponent } from './components/brilgevonden/brilgevonden.component';
+import { HomescreenComponent } from './components/homescreen/homescreen.component';
 import { MaterialModule } from './material-module';
-import { UploadImagesComponent } from './upload-images/upload-images.component';
-import { AutocompleteMapsComponent } from './autocomplete-maps/autocomplete-maps.component';
+import { UploadImagesComponent } from './components/upload-images/upload-images.component';
+import { AutocompleteMapsComponent } from './components/autocomplete-maps/autocomplete-maps.component';
 import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/google-maps-autocomplete';
 import { AgmCoreModule } from '@agm/core';
-import { brillenLijstComponent } from './brillen-lijst/brillen-lijst.component';
-import { BrilListItemComponent } from './bril-list-item/bril-list-item.component';
-import { BrilAdvertentieComponent } from './bril-advertentie/bril-advertentie.component';
+import { brillenLijstComponent } from './components/brillen-lijst/brillen-lijst.component';
+import { BrilListItemComponent } from './components/bril-list-item/bril-list-item.component';
+import { BrilAdvertentieComponent } from './components/bril-advertentie/bril-advertentie.component';
 import { BrilIdService } from './services/bril-id.service';
-import { EffectsModule } from '@ngrx/effects';
-import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { BrilgevondenComponent } from './brilgevonden/brilgevonden.component';
+import { BrilgevondenComponent } from './components/brilgevonden/brilgevonden.component';
 
 @Component({
   selector: 'app-root',

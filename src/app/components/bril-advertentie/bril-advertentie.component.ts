@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Bril, Brillen } from '../bril-list-item/Bril';
-import { BrilIdService } from '../services/bril-id.service';
+import { BrilIdService } from '../../services/bril-id.service';
 import { Store } from 'redux';
 
 @Component({

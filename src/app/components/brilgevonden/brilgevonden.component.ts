@@ -2,9 +2,9 @@ import { Component, Directive } from '@angular/core';
 import { Router } from '@angular/router';
 import {FormGroup, FormControl, FormsModule, ReactiveFormsModule, FormBuilder, Validators} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { ApiService } from '../services/api.service';
-import { FakeBril } from '../dao/fakebril';
-import { Address } from '../dao/address';
+import { ApiService } from '../../services/api.service';
+import { FakeBril } from '../../dao/fakebril';
+import { Address } from '../../dao/address';
 
 
 @Component({

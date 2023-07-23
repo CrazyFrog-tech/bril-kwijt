@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router'; // CLI imports router
 import { AppComponent } from './app.component';
-import { BrilgevondenComponent } from './brilgevonden/brilgevonden.component';
-import { HomescreenComponent } from './homescreen/homescreen.component';
-import { brillenLijstComponent } from './brillen-lijst/brillen-lijst.component';
-import { BrilAdvertentieComponent } from './bril-advertentie/bril-advertentie.component';
+import { BrilgevondenComponent } from './components/brilgevonden/brilgevonden.component';
+import { HomescreenComponent } from './components/homescreen/homescreen.component';
+import { brillenLijstComponent } from './components/brillen-lijst/brillen-lijst.component';
+import { BrilAdvertentieComponent } from './components/bril-advertentie/bril-advertentie.component';
 
 const routes: Routes = [
   { path: '', component: AppComponent },
