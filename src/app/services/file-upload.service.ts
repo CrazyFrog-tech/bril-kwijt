@@ -10,7 +10,7 @@ export class FileUploadService {
 
   constructor(private http: HttpClient) {}
 
-  upload(file: File): Observable<HttpEvent<any>> {
+  upload(file: File, brilId : number): Observable<HttpEvent<any>> {
     const formData: FormData = new FormData();
 
     formData.append('file', file);

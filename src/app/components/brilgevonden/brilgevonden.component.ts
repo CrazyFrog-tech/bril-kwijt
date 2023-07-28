@@ -13,6 +13,7 @@ import { Address } from '../../dao/address';
   styleUrls: ['./brilgevonden.component.css'],
 })
 export class BrilgevondenComponent {
+  selectedFiles: FileList | null = null;
   post: any = '';
   formGroup = new FormGroup({
     description: new FormControl(''),
@@ -38,17 +39,27 @@ export class BrilgevondenComponent {
     private apiService: ApiService) {
 
   }
+  onchange(event: any): void {
+    this.selectedFiles = event.target.files;
+  }
 
   goHome() {
     let description = '';
     description = this.formGroup.controls['description'].value as string;
     let dateLostAt = this.lostAtFormGroup.controls['lostAt'].value as Date;
+    let formData = new FormData();
 
     console.log('/homescreen');
     console.log(this.formGroup.controls['description'].value);
-     let address = new Address("pijpkruidstraat", "100", "1562", "Krommenie");
+    if (this.selectedFiles && this.selectedFiles.length) {
+    for (let i = 0; i < this.selectedFiles.length; i++) {
+      formData.append('images', this.selectedFiles[i]);
+    }
+  }
+    let address = new Address("pijpkruidstraat", "100", "1562", "Krommenie");
     let fakeBril = new FakeBril(description, dateLostAt, address)
-    this.apiService.addFakeBril(fakeBril).subscribe(
+    formData.append('bril', JSON.stringify(fakeBril));
+    this.apiService.addFakeBril(formData).subscribe(
       data =>{
         console.log(data);
       }

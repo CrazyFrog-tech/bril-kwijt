@@ -16,10 +16,10 @@ export class ApiService {
     return this.http.get<FakeBril[]>(this.baseURL + 'people')
   }
 
-  addFakeBril(fakebril:FakeBril): Observable<any> {
+  addFakeBril(fakebril:FormData): Observable<any> {
 
     console.log(fakebril)
-    return this.http.post<FakeBril>(this.baseURL + 'description', fakebril);
+    return this.http.post<FormData>(this.baseURL + 'description', fakebril);
   }
 
 }

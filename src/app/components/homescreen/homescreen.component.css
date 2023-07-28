@@ -22,3 +22,14 @@ mat-grid-list {
 .button {
   background-color: #1899d6;
 }
+
+
+.backgound {
+  display:block;
+  width:100%;
+  height:100%;
+  background-size: cover;
+  background-repeat:   no-repeat;
+  background-position: center center;
+  background-image: url('../../../assets/images/homeScreenBackground2.jpg');
+}
