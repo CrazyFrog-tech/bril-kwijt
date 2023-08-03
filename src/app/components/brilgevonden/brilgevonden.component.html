@@ -1,14 +1,24 @@
 <mat-form-field>
   <mat-label>Choose a date</mat-label>
-  <input matInput  formControlName="lostAt" [matDatepicker]="picker">
+  <input matInput formControlName="lostAt" [matDatepicker]="picker" />
   <mat-hint>MM/DD/YYYY</mat-hint>
   <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
   <mat-datepicker #picker></mat-datepicker>
 </mat-form-field>
-<p></p>
-<p>
-  <app-autocomplete-maps></app-autocomplete-maps>
-</p>
+
+<form [formGroup]="address">
+  <mat-card>
+    <mat-card-title>Auto Parse Address</mat-card-title>
+    <mat-card-content>
+      <mat-search-google-maps-autocomplete
+        formControlName="address"
+        appearance="outline"
+        country="nl"
+      >
+      </mat-search-google-maps-autocomplete>
+    </mat-card-content>
+  </mat-card>
+</form>
 <mat-form-field appearance="outline">
   <mat-label>Beschrijving</mat-label>
   <div [formGroup]="formGroup">

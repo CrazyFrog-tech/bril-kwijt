@@ -15,7 +15,6 @@ import { BrilgevondenComponent } from './components/brilgevonden/brilgevonden.co
 import { HomescreenComponent } from './components/homescreen/homescreen.component';
 import { MaterialModule } from './material-module';
 import { UploadImagesComponent } from './components/upload-images/upload-images.component';
-import { AutocompleteMapsComponent } from './components/autocomplete-maps/autocomplete-maps.component';
 import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/google-maps-autocomplete';
 import { AgmCoreModule } from '@agm/core';
 import { brillenLijstComponent } from './components/brillen-lijst/brillen-lijst.component';
@@ -29,7 +28,6 @@ import { BrilIdService } from './services/bril-id.service';
     BrilgevondenComponent,
     HomescreenComponent,
     UploadImagesComponent,
-    AutocompleteMapsComponent,
     brillenLijstComponent,
     BrilListItemComponent,
     BrilAdvertentieComponent,

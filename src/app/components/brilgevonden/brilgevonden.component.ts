@@ -23,11 +23,8 @@ export class BrilgevondenComponent {
     lostAt: new FormControl(new Date),
   });
 
-  addressFormGroup = new FormGroup({
-    street: new FormControl(''),
-    houseNr: new FormControl(''),
-    zipCode: new FormControl(''),
-    city: new FormControl('')
+  address = new FormGroup({
+    address: new FormControl(''),
   })
 
   //TODO how are we gonna post it
@@ -44,6 +41,7 @@ export class BrilgevondenComponent {
   }
 
   goHome() {
+    console.log(this.address.controls['address']);
     let description = '';
     description = this.formGroup.controls['description'].value as string;
     let dateLostAt = this.lostAtFormGroup.controls['lostAt'].value as Date;
@@ -56,9 +54,10 @@ export class BrilgevondenComponent {
       formData.append('images', this.selectedFiles[i]);
     }
   }
-    let address = new Address("pijpkruidstraat", "100", "1562", "Krommenie");
-    let fakeBril = new FakeBril(description, dateLostAt, address)
+  let addrezz = this.address.controls['address'].value || " ";
+    let fakeBril = new FakeBril(description, dateLostAt, addrezz)
     formData.append('bril', JSON.stringify(fakeBril));
+    console.log(formData);
     this.apiService.addFakeBril(formData).subscribe(
       data =>{
         console.log(data);
