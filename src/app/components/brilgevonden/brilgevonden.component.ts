@@ -36,7 +36,8 @@ export class BrilgevondenComponent {
     private apiService: ApiService) {
 
   }
-  onchange(event: any): void {
+  getSelectedFiles(event: any): void {
+    debugger;
     this.selectedFiles = event.target.files;
   }
 

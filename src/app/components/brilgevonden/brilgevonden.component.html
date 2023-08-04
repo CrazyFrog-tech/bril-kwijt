@@ -34,7 +34,7 @@
   <mat-hint>Hint</mat-hint>
 </mat-form-field>
 <div class="container">
-  <app-upload-images onchange="onchange($event)"></app-upload-images>
+  <app-upload-images (change)="getSelectedFiles($event)"></app-upload-images>
 </div>
 <button mat-flat-button type="submit" color="primary" (click)="goHome()">
   Upload

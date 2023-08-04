@@ -10,7 +10,7 @@ import { FileUploadService } from '../../services/file-upload.service';
 })
 export class UploadImagesComponent implements OnInit {
 
-  @Output() onchange: EventEmitter<any> = new EventEmitter<any>();
+  @Output() filesEmitter = new EventEmitter<any>();
 
 
   selectedFiles?: FileList;
@@ -52,7 +52,7 @@ export class UploadImagesComponent implements OnInit {
     }
 
     // Emit the event to the parent component
-    this.onchange.emit(event);
+    this.filesEmitter.emit(event);
   }
 
 
