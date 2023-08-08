@@ -11,6 +11,7 @@
     <mat-card-title>Auto Parse Address</mat-card-title>
     <mat-card-content>
       <mat-search-google-maps-autocomplete
+      (onGermanAddressMapped) = "onAutoCompleteSelected($event)"
         formControlName="address"
         appearance="outline"
         country="nl"
