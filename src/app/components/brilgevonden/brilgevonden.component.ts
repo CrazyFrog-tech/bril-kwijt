@@ -17,7 +17,7 @@ import { GermanAddress } from '@angular-material-extensions/google-maps-autocomp
 })
 export class BrilgevondenComponent {
   public selectedAddress!: PlaceResult;
-
+  displayProgressSpinner: boolean = false;
   selectedFiles: FileList | null = null;
   post: any = '';
   formGroup = new FormGroup({
@@ -33,10 +33,6 @@ export class BrilgevondenComponent {
   address = new FormGroup({
     address: new FormControl(''),
   })
-
-  //TODO how are we gonna post it
-  // first get the information from the address with formgroup and formcontrols
-
 
 
   constructor(private router: Router,
@@ -60,8 +56,8 @@ export class BrilgevondenComponent {
   }
 
   goHome() {
+    this.displayProgressSpinner = true;
     //todo getting specifik data from the address.
-
     let description = '';
     description = this.formGroup.controls['description'].value as string;
     let dateLostAt = this.lostAtFormGroup.controls['lostAt'].value as Date;
@@ -72,16 +68,28 @@ export class BrilgevondenComponent {
         formData.append('images', this.selectedFiles[i]);
       }
     }
-    let addrezz = this.address.controls['address'].value || " ";
     let fakeBril = new FakeBril(description, dateLostAt, this.addressObject)
     formData.append('bril', JSON.stringify(fakeBril));
     for (var pair of formData.entries()) {
       console.log(pair[0] + ', ' + pair[1]);
     }
-    this.apiService.addFakeBril(formData).subscribe(
-      data => {
-      }
-    )
+    this.apiService.addFakeBril(formData).subscribe({
+      next: (value) => {
+        this.displayProgressSpinner =true;
+      },
+      error: (err) => {
+        this.displayProgressSpinner = false;
+
+      },
+      complete: () => {
+        this.displayProgressSpinner = false;
+
+      },
+    }
+    );
+    this.displayProgressSpinner = false;
+
+
     // DEBUG YHR POST METHOD WHY IT DOEN'T WORK
     this.router.navigate(['/homescreen']);
   }

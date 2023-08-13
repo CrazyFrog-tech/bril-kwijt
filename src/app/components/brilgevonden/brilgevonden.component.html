@@ -1,42 +1,53 @@
-<mat-form-field>
-  <mat-label>Choose a date</mat-label>
-  <input matInput formControlName="lostAt" [matDatepicker]="picker" />
-  <mat-hint>MM/DD/YYYY</mat-hint>
-  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker #picker></mat-datepicker>
-</mat-form-field>
 
-<form [formGroup]="address">
-  <mat-card>
-    <mat-card-title>Auto Parse Address</mat-card-title>
-    <mat-card-content>
-      <mat-search-google-maps-autocomplete
-      (onGermanAddressMapped) = "onAutoCompleteSelected($event)"
-        formControlName="address"
-        appearance="outline"
-        country="nl"
-      >
-      </mat-search-google-maps-autocomplete>
-    </mat-card-content>
-  </mat-card>
-</form>
-<mat-form-field appearance="outline">
-  <mat-label>Beschrijving</mat-label>
-  <div [formGroup]="formGroup">
-    <input
-      type="text"
-      matInput
-      placeholder="Placeholder"
-      formControlName="description"
-    />
+<div class="background">
+  <div class="container">
+    <mat-spinner *ngIf="displayProgressSpinner"></mat-spinner>
+    <div class="card">
+      <mat-form-field>
+        <mat-label>Choose a date</mat-label>
+        <input matInput formControlName="lostAt" [matDatepicker]="picker" />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <form [formGroup]="address">
+        <mat-card>
+          <mat-card-title>Auto Parse Address</mat-card-title>
+          <mat-card-content>
+            <mat-search-google-maps-autocomplete
+              (onGermanAddressMapped)="onAutoCompleteSelected($event)"
+              formControlName="address"
+              appearance="outline"
+              country="nl"
+            >
+            </mat-search-google-maps-autocomplete>
+          </mat-card-content>
+        </mat-card>
+      </form>
+      <mat-form-field appearance="outline">
+        <mat-label>Beschrijving</mat-label>
+        <div [formGroup]="formGroup">
+          <input
+            type="text"
+            matInput
+            placeholder="Placeholder"
+            formControlName="description"
+          />
+        </div>
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        <mat-hint>Hint</mat-hint>
+      </mat-form-field>
+      <div class="container">
+        <app-upload-images
+          (change)="getSelectedFiles($event)"
+        ></app-upload-images>
+      </div>
+      <button mat-flat-button type="submit" color="primary" (click)="goHome()">
+        Upload
+      </button>
+    </div>
   </div>
-
-  <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-  <mat-hint>Hint</mat-hint>
-</mat-form-field>
-<div class="container">
-  <app-upload-images (change)="getSelectedFiles($event)"></app-upload-images>
 </div>
-<button mat-flat-button type="submit" color="primary" (click)="goHome()">
-  Upload
-</button>
