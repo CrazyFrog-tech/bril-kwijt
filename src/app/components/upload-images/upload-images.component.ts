@@ -25,7 +25,6 @@ export class UploadImagesComponent implements OnInit {
   constructor(private uploadService: FileUploadService) {}
 
   ngOnInit(): void {
-    this.imageInfos = this.uploadService.getFiles();
   }
 
   selectFiles(event: any): void {
