@@ -11,9 +11,8 @@ export class ApiService {
   constructor(private http: HttpClient) {
   }
 
-  getFakebrillen(): Observable<FakeBril[]> {
-    console.log('getPeople '+this.baseURL + 'people')
-    return this.http.get<FakeBril[]>(this.baseURL + 'people')
+  getAllBrillen(): Observable<FakeBril[]> {
+    return this.http.get<FakeBril[]>(this.baseURL + 'brillen')
   }
 
   addFakeBril(fakebril:FormData): Observable<any> {
