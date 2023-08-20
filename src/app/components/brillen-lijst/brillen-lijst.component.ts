@@ -14,7 +14,18 @@ export class brillenLijstComponent implements OnInit {
     this.apiService.getAllBrillen().subscribe({
       next: (res) => {
         for( var obj of res){
-          console.log(obj);
+
+          let imageName = obj.imageFilenames[0];
+          console.log(imageName);
+          if( imageName !== undefined){
+            this.apiService.getImages(imageName).subscribe({
+              next:(res) => {
+                console.log(res);
+                //here handle image
+
+              },
+            });
+          }
           this.brilListItems.push(new BrilListItem(obj.id, obj.description, obj.imageFilenames[0]))
 
         }

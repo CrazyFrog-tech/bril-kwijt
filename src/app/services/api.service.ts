@@ -11,6 +11,10 @@ export class ApiService {
   constructor(private http: HttpClient) {
   }
 
+  getImages(imageName: string): Observable<string[]> {
+    return this.http.get<string[]>(this.baseURL + `/image/${imageName}`);
+  }
+
   getAllBrillen(): Observable<any[]> {
     return this.http.get<FakeBril[]>(this.baseURL + 'brillen')
   }
