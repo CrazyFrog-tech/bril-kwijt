@@ -11,7 +11,7 @@ export class ApiService {
   constructor(private http: HttpClient) {
   }
 
-  getAllBrillen(): Observable<FakeBril[]> {
+  getAllBrillen(): Observable<any[]> {
     return this.http.get<FakeBril[]>(this.baseURL + 'brillen')
   }
 

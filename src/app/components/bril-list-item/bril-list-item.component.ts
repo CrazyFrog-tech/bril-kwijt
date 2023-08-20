@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Bril } from './Bril';
+import { BrilListItem } from '../brillen-lijst/brilI-list-item';
 import { Router } from '@angular/router';
 import { BrilIdService } from '../../services/bril-id.service';
 @Component({
@@ -8,14 +8,14 @@ import { BrilIdService } from '../../services/bril-id.service';
   styleUrls: ['./bril-list-item.component.css'],
 })
 export class BrilListItemComponent {
-  @Input() bril!: Bril;
+  @Input() bril!: BrilListItem;
   constructor(private router: Router, private brilIdService: BrilIdService) {}
 
   onListItemClicked() {
     console.log('do the thing');
-    if (this.bril.id) {
-      this.brilIdService.setId(this.bril.id);
-      this.router.navigate(['/briladvertentie']);
-    }
+    // if (this.bril.id) {
+    //   this.brilIdService.setId(this.bril.id);
+    //   this.router.navigate(['/briladvertentie']);
+    // }
   }
 }

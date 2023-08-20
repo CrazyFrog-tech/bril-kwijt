@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Bril, Brillen } from '../bril-list-item/Bril';
+import { BrilListItem } from '../brillen-lijst/brilI-list-item';
 import { BrilIdService } from '../../services/bril-id.service';
 import { Store } from 'redux';
 
@@ -10,8 +10,7 @@ import { Store } from 'redux';
 })
 export class BrilAdvertentieComponent implements OnInit {
   id: string = '';
-  brillen = Brillen;
-  bril!: Bril;
+  bril!: BrilListItem;
 
   constructor(private brilIdService: BrilIdService) {}
 
@@ -19,9 +18,9 @@ export class BrilAdvertentieComponent implements OnInit {
     this.brilIdService.selectedId$.subscribe((value) => {
       this.id = value;
     });
-    let tempBril = this.brillen.find((obj) => obj.id === this.id);
-    if (tempBril) {
-      this.bril = tempBril;
-    }
+    // let tempBril = this.brillen.find((obj) => obj.id === this.id);
+    // if (tempBril) {
+    //   this.bril = tempBril;
+    // }
   }
 }
