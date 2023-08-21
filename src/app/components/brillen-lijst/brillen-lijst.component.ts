@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { BrilListItem } from './brilI-list-item';
+import { HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-gevonden-brillen',
@@ -14,11 +15,11 @@ export class brillenLijstComponent implements OnInit {
     this.apiService.getAllBrillen().subscribe({
       next: (res) => {
         for( var obj of res){
-
           let imageName = obj.imageFilenames[0];
-          console.log(imageName);
           if( imageName !== undefined){
-            this.apiService.getImages(imageName).subscribe({
+            let httpParams = new HttpParams();
+            httpParams.append("imageName", "imageName");
+            this.apiService.getImages(httpParams).subscribe({
               next:(res) => {
                 console.log(res);
                 //here handle image
@@ -29,7 +30,6 @@ export class brillenLijstComponent implements OnInit {
           this.brilListItems.push(new BrilListItem(obj.id, obj.description, obj.imageFilenames[0]))
 
         }
-          console.log(this.brilListItems);
       },
     })
   }

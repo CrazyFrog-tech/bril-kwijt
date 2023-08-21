@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { FakeBril } from '../dao/fakebril';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -11,8 +11,8 @@ export class ApiService {
   constructor(private http: HttpClient) {
   }
 
-  getImages(imageName: string): Observable<string[]> {
-    return this.http.get<string[]>(this.baseURL + `/image/${imageName}`);
+  getImages(params: HttpParams): Observable<string[]> {
+    return this.http.get<string[]>(this.baseURL +'brilImage', {params});
   }
 
   getAllBrillen(): Observable<any[]> {
