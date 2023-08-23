@@ -18,7 +18,7 @@ export class brillenLijstComponent implements OnInit {
           let imageName = obj.imageFilenames[0];
           if( imageName !== undefined){
             let httpParams = new HttpParams();
-            httpParams.append("imageName", "imageName");
+            httpParams = httpParams.append('imageName', imageName);
             this.apiService.getImages(httpParams).subscribe({
               next:(res) => {
                 console.log(res);
