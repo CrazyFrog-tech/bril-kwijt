@@ -11,8 +11,8 @@ export class ApiService {
   constructor(private http: HttpClient) {
   }
 
-  getImages(httpParams: HttpParams): Observable<string[]> {
-    return this.http.get<string[]>(this.baseURL +'brilImage', {params: httpParams});
+getImages(httpParams: HttpParams): Observable<Blob> {
+    return this.http.get(this.baseURL + 'brilImage', { params: httpParams, responseType: 'blob' });
   }
 
   getAllBrillen(): Observable<any[]> {
