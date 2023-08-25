@@ -1,10 +1,11 @@
- <!-- <mat-list-item (click)="onListItemClicked()">
-    <img matListItemAvatar
-        src= {{bril.imageContent}}
-        alt="Photo of a Shiba Inu">
-    <h3 matListItemTitle> {{bril.name}} </h3>
-    <p matListItemLine>
-        <span> {{bril.name}} </span>
-        <span class="demo-2"> -- {{bril.name}} </span>
-    </p>
-</mat-list-item> -->
+<mat-list-item (click)="onListItemClicked()">
+  <img
+    [src]="brilListItem.imageContent"
+    alt="Image"
+  >
+  <h3 matListItemTitle>{{ brilListItem.name }}</h3>
+  <p matListItemLine>
+    <span> {{ brilListItem.name}} </span>
+    <span class="demo-2"> -- {{ brilListItem.name }} </span>
+  </p>
+</mat-list-item>

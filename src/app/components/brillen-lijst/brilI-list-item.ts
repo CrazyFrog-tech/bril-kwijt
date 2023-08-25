@@ -1,6 +1,8 @@
+import { SafeUrl } from "@angular/platform-browser";
+
 export class BrilListItem {
   constructor(
-  id: string,
-  name: string,
-  imageContent: string){}
+  public id: string,
+  public name: string,
+  public imageContent: SafeUrl|null){}
 }

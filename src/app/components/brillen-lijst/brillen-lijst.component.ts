@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { BrilListItem } from './brilI-list-item';
 import { HttpParams } from '@angular/common/http';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-gevonden-brillen',
@@ -9,25 +10,31 @@ import { HttpParams } from '@angular/common/http';
   styleUrls: ['./brillen-lijst.component.css'],
 })
 export class brillenLijstComponent implements OnInit {
-  constructor(private apiService: ApiService){}
-   brilListItems: BrilListItem[] = new Array;
+  constructor(private apiService: ApiService, private sanitizer: DomSanitizer) { }
+  brilListItems: BrilListItem[] = new Array;
+  image: SafeUrl | null = null;
+
   ngOnInit(): void {
     this.apiService.getAllBrillen().subscribe({
       next: (res) => {
-        for( var obj of res){
+        for (var obj of res) {
           let imageName = obj.imageFilenames[0];
-          if( imageName !== undefined){
+          if (imageName !== undefined) {
             let httpParams = new HttpParams();
             httpParams = httpParams.append('imageName', imageName);
             this.apiService.getImages(httpParams).subscribe({
-              next:(res) => {
-                console.log(res);
-                //here handle image
+              next: (res) => {
+                const blob = new Blob([res], { type: 'application/image' });
+                const unsafeImg = URL.createObjectURL(blob);
+                this.image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
+                let brilItem = new BrilListItem(obj.id, obj.description, this.image);
 
+                console.log(brilItem);
+                  this.brilListItems
+                  .push(brilItem);
               },
             });
           }
-          this.brilListItems.push(new BrilListItem(obj.id, obj.description, obj.imageFilenames[0]))
 
         }
       },
