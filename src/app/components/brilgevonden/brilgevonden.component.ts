@@ -20,9 +20,13 @@ export class BrilgevondenComponent {
   displayProgressSpinner: boolean = false;
   selectedFiles: FileList | null = null;
   post: any = '';
-  formGroup = new FormGroup({
-    description: new FormControl(''),
+  descriptionFormGroup = new FormGroup({
+  description: new FormControl(''),
+
   });
+  titelFormGroup = new FormGroup({
+    titel: new FormControl(''),
+    });
 
   addressObject! : Address;
 
@@ -58,8 +62,8 @@ export class BrilgevondenComponent {
   goHome() {
     this.displayProgressSpinner = true;
     //todo getting specifik data from the address.
-    let description = '';
-    description = this.formGroup.controls['description'].value as string;
+    let titel = this.titelFormGroup.controls['titel'].value as string;
+    let description = this.descriptionFormGroup.controls['description'].value as string;
     let dateLostAt = this.lostAtFormGroup.controls['lostAt'].value as Date;
     let formData = new FormData();
 
@@ -68,7 +72,7 @@ export class BrilgevondenComponent {
         formData.append('images', this.selectedFiles[i]);
       }
     }
-    let fakeBril = new FakeBril(description, dateLostAt, this.addressObject)
+    let fakeBril = new FakeBril(titel, description, dateLostAt, this.addressObject)
     formData.append('bril', JSON.stringify(fakeBril));
     for (var pair of formData.entries()) {
       console.log(pair[0] + ', ' + pair[1]);

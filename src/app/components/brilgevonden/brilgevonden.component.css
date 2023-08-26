@@ -30,6 +30,9 @@ body, h1, h2, h3, p, ul, li {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   background-color: #ffffff;
 }
+.inputField {
+  margin-top: 5px;
+}
 
 /* Style the form fields */
 .mat-form-field {

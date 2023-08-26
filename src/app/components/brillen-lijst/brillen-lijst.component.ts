@@ -26,10 +26,10 @@ export class brillenLijstComponent implements OnInit {
               next: (res) => {
                 const unsafeImg = URL.createObjectURL(res);
                 this.image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
-                let brilItem = new BrilListItem(obj.id, obj.description, this.image);
+                let brilItem = new BrilListItem(obj.id, obj.titel, obj.description, this.image);
 
                 console.log(brilItem);
-                  this.brilListItems
+                this.brilListItems
                   .push(brilItem);
               },
             });

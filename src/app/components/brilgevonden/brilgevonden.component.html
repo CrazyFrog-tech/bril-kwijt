@@ -3,6 +3,18 @@
   <div class="container">
     <mat-spinner *ngIf="displayProgressSpinner"></mat-spinner>
     <div class="card">
+      <mat-form-field class="inputField" appearance="outline">
+        <mat-label>Titel</mat-label>
+        <div [formGroup]="titelFormGroup">
+          <input
+            type="text"
+            matInput
+            placeholder="Titel"
+            formControlName="titel"
+          />
+        </div>
+        <mat-hint>Hint</mat-hint>
+      </mat-form-field>
       <mat-form-field>
         <mat-label>Choose a date</mat-label>
         <input matInput formControlName="lostAt" [matDatepicker]="picker" />
@@ -23,21 +35,21 @@
               appearance="outline"
               country="nl"
             >
-            </mat-search-google-maps-autocomplete>
+          </mat-search-google-maps-autocomplete>
           </mat-card-content>
         </mat-card>
       </form>
-      <mat-form-field appearance="outline">
+
+      <mat-form-field class="inputField" appearance="outline">
         <mat-label>Beschrijving</mat-label>
-        <div [formGroup]="formGroup">
+        <div [formGroup]="descriptionFormGroup">
           <input
             type="text"
             matInput
-            placeholder="Placeholder"
+            placeholder="Beschrijving"
             formControlName="description"
           />
         </div>
-        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         <mat-hint>Hint</mat-hint>
       </mat-form-field>
       <div class="container">
