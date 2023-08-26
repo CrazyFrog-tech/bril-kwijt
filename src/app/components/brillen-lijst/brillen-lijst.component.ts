@@ -16,20 +16,25 @@ export class brillenLijstComponent implements OnInit {
   image: SafeUrl | null = null;
 
   ngOnInit() {
+
     this.apiService.getAllBrillen().pipe(
       switchMap((brillen) => {
-        const imageRequests = brillen.map((bril) =>
-          this.apiService.getImages(new HttpParams().append('imageName', bril.imageFileNames[0])).pipe(
+        const imageRequests = brillen.map((obj) =>
+          this.apiService.getImages(new HttpParams().append('imageName', obj.imageFilenames[0])).pipe(
             map((imageBlob) => {
               const blob = new Blob([imageBlob], { type: 'application/image' });
               const unsafeImg = URL.createObjectURL(blob);
               const image: SafeUrl = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
-              return new BrilListItem(bril.id, bril.titel, image);
+              return new BrilListItem(obj.id, obj.titel, image);
             })
-            ))
-      return forkJoin(imageRequests)})
+          )
+        );
+        return forkJoin(imageRequests);
+      })
     ).subscribe((brilListItems) => {
       this.brilListItems = brilListItems;
-    })
-}
+    });
+  }
+
+
 }
