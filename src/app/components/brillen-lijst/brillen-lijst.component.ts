@@ -3,6 +3,7 @@ import { ApiService } from 'src/app/services/api.service';
 import { BrilListItem } from '../../dao/brilI-list-item';
 import { HttpParams } from '@angular/common/http';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { forkJoin, map, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-gevonden-brillen',
@@ -14,29 +15,21 @@ export class brillenLijstComponent implements OnInit {
   brilListItems: BrilListItem[] = new Array;
   image: SafeUrl | null = null;
 
-  ngOnInit(): void {
-    this.apiService.getAllBrillen().subscribe({
-      next: (res) => {
-        for (var obj of res) {
-          let imageName = obj.imageFilenames[0];
-          if (imageName !== undefined) {
-            let httpParams = new HttpParams();
-            httpParams = httpParams.append('imageName', imageName);
-            this.apiService.getImages(httpParams).subscribe({
-              next: (res) => {
-                const unsafeImg = URL.createObjectURL(res);
-                this.image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
-                let brilItem = new BrilListItem(obj.id, obj.titel, obj.description, this.image);
-
-                console.log(brilItem);
-                this.brilListItems
-                  .push(brilItem);
-              },
-            });
-          }
-
-        }
-      },
+  ngOnInit() {
+    this.apiService.getAllBrillen().pipe(
+      switchMap((brillen) => {
+        const imageRequests = brillen.map((bril) =>
+          this.apiService.getImages(new HttpParams().append('imageName', bril.imageFileNames[0])).pipe(
+            map((imageBlob) => {
+              const blob = new Blob([imageBlob], { type: 'application/image' });
+              const unsafeImg = URL.createObjectURL(blob);
+              const image: SafeUrl = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
+              return new BrilListItem(bril.id, bril.titel, image);
+            })
+            ))
+      return forkJoin(imageRequests)})
+    ).subscribe((brilListItems) => {
+      this.brilListItems = brilListItems;
     })
-  }
+}
 }
