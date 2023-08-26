@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { BrilListItem } from '../brillen-lijst/brilI-list-item';
+import { BrilListItem } from '../../dao/brilI-list-item';
 import { BrilIdService } from '../../services/bril-id.service';
 import { Store } from 'redux';
 

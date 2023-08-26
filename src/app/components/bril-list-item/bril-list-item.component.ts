@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { BrilListItem } from '../brillen-lijst/brilI-list-item';
+import { BrilListItem } from '../../dao/brilI-list-item';
 import { Router } from '@angular/router';
 import { BrilIdService } from '../../services/bril-id.service';
 @Component({

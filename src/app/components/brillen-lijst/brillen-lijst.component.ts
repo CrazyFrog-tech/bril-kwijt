@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
-import { BrilListItem } from './brilI-list-item';
+import { BrilListItem } from '../../dao/brilI-list-item';
 import { HttpParams } from '@angular/common/http';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
@@ -24,8 +24,7 @@ export class brillenLijstComponent implements OnInit {
             httpParams = httpParams.append('imageName', imageName);
             this.apiService.getImages(httpParams).subscribe({
               next: (res) => {
-                const blob = new Blob([res], { type: 'application/image' });
-                const unsafeImg = URL.createObjectURL(blob);
+                const unsafeImg = URL.createObjectURL(res);
                 this.image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
                 let brilItem = new BrilListItem(obj.id, obj.description, this.image);
 
