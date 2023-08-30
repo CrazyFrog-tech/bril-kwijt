@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { BrilListItem } from '../../dao/brilI-list-item';
 import { Router } from '@angular/router';
-import { BrilIdService } from '../../services/bril-id.service';
+import { BrilService } from '../../services/bril.service';
 @Component({
   selector: 'app-bril-list-item',
   templateUrl: './bril-list-item.component.html',
@@ -9,7 +9,7 @@ import { BrilIdService } from '../../services/bril-id.service';
 })
 export class BrilListItemComponent implements OnInit{
   @Input() brilListItem!: BrilListItem;
-  constructor(private router: Router, private brilIdService: BrilIdService) {}
+  constructor(private router: Router, private brilIdService: BrilService) {}
   ngOnInit(): void {
     console.log(this.brilListItem);
     }
@@ -17,8 +17,7 @@ export class BrilListItemComponent implements OnInit{
 
 
   onListItemClicked() {
-    //TODO remove this console log on list item clicked
-    console.log(this.brilListItem.imageContent);
-    console.log(this.brilListItem.imageContent);
+    this.brilIdService.setId(this.brilListItem.id);
+    this.router.navigate(['/briladvertentie']);
   }
 }

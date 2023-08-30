@@ -20,7 +20,7 @@ import { AgmCoreModule } from '@agm/core';
 import { brillenLijstComponent } from './components/brillen-lijst/brillen-lijst.component';
 import { BrilListItemComponent } from './components/bril-list-item/bril-list-item.component';
 import { BrilAdvertentieComponent } from './components/bril-advertentie/bril-advertentie.component';
-import { BrilIdService } from './services/bril-id.service';
+import { BrilService } from './services/bril.service';
 
 @NgModule({
   declarations: [
@@ -49,7 +49,7 @@ import { BrilIdService } from './services/bril-id.service';
       libraries: ['places'],
     }),
   ],
-  providers: [BrilIdService],
+  providers: [BrilService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

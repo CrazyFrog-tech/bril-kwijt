@@ -2,10 +2,12 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
-export class BrilIdService {
+export class BrilService {
   private id$ = new BehaviorSubject<string>('');
   selectedId$ = this.id$.asObservable();
-  constructor() {}
+  constructor() {
+
+  }
 
   setId(id: string) {
     this.id$.next(id);
