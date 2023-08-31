@@ -19,6 +19,10 @@ getImages(httpParams: HttpParams): Observable<Blob> {
     return this.http.get<FakeBril[]>(this.baseURL + 'brillen')
   }
 
+  getBril(id : string): Observable<FakeBril> {
+    return this.http.get<FakeBril>(this.baseURL + 'bril/' + id)
+  }
+
   addFakeBril(fakebril:FormData): Observable<any> {
 
     console.log(fakebril)
