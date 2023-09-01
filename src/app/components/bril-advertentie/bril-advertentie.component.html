@@ -1,7 +1,9 @@
 <mat-card *ngIf="bril">
-  <img mat-card-image src="bril.imageConent" alt="Glasses">
+  <div *ngFor="let safeImageUrl of images">
+    <!-- TODO fix here -->
+    <img mat-card-image src="safeImageUrl">
+  </div>
   <mat-card-header>
-    <div mat-card-avatar><mat-icon>face</mat-icon></div>
     <mat-card-title>{{bril.titel}}</mat-card-title>
     <mat-card-subtitle>Scientist</mat-card-subtitle>
   </mat-card-header>

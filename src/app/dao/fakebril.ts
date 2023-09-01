@@ -6,5 +6,6 @@ export class FakeBril {
     public description: string,
     public lostAtDate: Date,
     public address: Address,
+    public imageFilenames?: string[],
   ) { }
 }
