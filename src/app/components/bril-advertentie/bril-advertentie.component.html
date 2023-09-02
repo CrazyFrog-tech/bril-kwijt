@@ -1,13 +1,13 @@
 <mat-card *ngIf="bril">
   <div *ngFor="let safeImageUrl of images">
-    <!-- TODO fix here -->
-    <img mat-card-image src="safeImageUrl">
+        <!-- TODO fix here -->
+    <img mat-card-image [src]="safeImageUrl">
   </div>
-  <mat-card-header>
-    <mat-card-title>{{bril.titel}}</mat-card-title>
-    <mat-card-subtitle>Scientist</mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content>
-    <p>A brilliant scientist who wears glasses.</p>
-  </mat-card-content>
-</mat-card>
+      <mat-card-header>
+      <mat-card-title>{{bril.titel}}</mat-card-title>
+      <mat-card-subtitle>Scientist</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>A brilliant scientist who wears glasses.</p>
+    </mat-card-content>
+  </mat-card>
