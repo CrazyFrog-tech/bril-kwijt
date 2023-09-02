@@ -55,7 +55,6 @@ export class BrilgevondenComponent {
     console.log('onAutocompleteSelected: ', result);
   }
   getSelectedFiles(event: any): void {
-    debugger;
     this.selectedFiles = event.target.files;
   }
 
