@@ -21,6 +21,7 @@ import { brillenLijstComponent } from './components/brillen-lijst/brillen-lijst.
 import { BrilListItemComponent } from './components/bril-list-item/bril-list-item.component';
 import { BrilAdvertentieComponent } from './components/bril-advertentie/bril-advertentie.component';
 import { BrilService } from './services/bril.service';
+import { ImageSliderComponent } from './image-slider/image-slider.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { BrilService } from './services/bril.service';
     brillenLijstComponent,
     BrilListItemComponent,
     BrilAdvertentieComponent,
+    ImageSliderComponent,
   ],
   imports: [
     BrowserModule,

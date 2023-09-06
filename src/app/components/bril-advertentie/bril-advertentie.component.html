@@ -1,7 +1,7 @@
 <mat-card *ngIf="bril">
-  <div *ngFor="let safeImageUrl of images">
+  <div *ngIf="images">
         <!-- TODO fix here -->
-    <img mat-card-image [src]="safeImageUrl">
+    <app-image-slider [images]="images"></app-image-slider>
   </div>
       <mat-card-header>
       <mat-card-title>{{bril.titel}}</mat-card-title>
