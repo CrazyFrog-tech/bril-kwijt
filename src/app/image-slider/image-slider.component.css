@@ -24,27 +24,27 @@
   height: 71px;
   outline: none !important;
   cursor: pointer;
-  background: url(../assets/blank.gif) no-repeat;
+  background: url(../../assets/Carousel/blank.gif) no-repeat;
   border: none;
 }
 
 .arrow.prev {
   opacity: 0.2;
   left: 20px;
-  background-image: url(../assets/paddle_prev_999.png);
+  background-image: url(../../assets/Carousel/paddle_prev_999.png);
   transition: 0.2s linear all;
 }
 
 .arrow.next {
   opacity: 0.2;
   right: 20px;
-  background-image: url(../assets/paddle_next_999.png);
+  background-image: url(../../assets/Carousel/paddle_next_999.png);
   transition: 0.2s linear all;
 }
 
 .arrow.prev:hover {
   opacity: 1;
-  background-image: url(../assets/paddle_prev_fff.png);
+  background-image: url(../../assets/Carousel/paddle_prev_fff.png);
 }
 
 .arrow.next:hover {
@@ -58,13 +58,13 @@
     border: 20px solid #FFF;
     margin-top: 20px;
   }
-  
+
   .slide {
     position: absolute;
     top: 0;
     left: 0;
   }
-  
+
   .arrow {
     position: absolute;
     z-index: 1002;
@@ -75,40 +75,40 @@
     height: 71px;
     outline: none !important;
     cursor: pointer;
-    background: url(../assets/blank.gif) no-repeat;
+    background: url(../../assets/Carousel/blank.gif) no-repeat;
     border: none;
   }
-  
+
   .arrow.prev {
     opacity: 0.2;
     left: 20px;
-    background-image: url(../assets/paddle_prev_999.png);
+    background-image: url(../../assets/Carousel/paddle_prev_999.png);
     transition: 0.2s linear all;
   }
-  
+
   .arrow.next {
     opacity: 0.2;
     right: 20px;
-    background-image: url(../assets/paddle_next_999.png);
+    background-image: url(../../assets/Carousel/paddle_next_999.png);
     transition: 0.2s linear all;
   }
-  
+
   .arrow.prev:hover {
     opacity: 1;
-    background-image: url(../assets/paddle_prev_fff.png);
+    background-image: url(../../assets/Carousel/paddle_prev_fff.png);
   }
-  
+
   .arrow.next:hover {
     opacity: 1;
-    background-image: url(../assets/paddle_next_fff.png);
+    background-image: url(../../assets/Carousel/paddle_next_fff.png);
   }
-  
-  
-  
+
+
+
   /*---------------------------------------------------------
   NAV
   ---------------------------------------------------------*/
-  
+
   .nav {
     text-align: center;
     display: block;
@@ -119,35 +119,35 @@
     right: 0;
     height: 48px;
   }
-  
+
   .nonDraggableImage{
     -webkit-user-drag: none;
   }
-  
+
   .nav .wrapper {
     margin: 0 auto;
     width: 100%;
     padding: 1em 0 .8em;
   }
-  
+
   .nav ul {
     margin: 0;
     width: 100%;
   }
-  
+
   .nav .dot, .nav .dot span {
     display: inline-block;
     zoom: 1;
     cursor: pointer;
   }
-  
+
   .dots .dot {
     position: relative;
     margin: 0 8px;
     width: 12px;
     height: 12px;
   }
-  
+
   .dots .dot span {
     position: absolute;
     top: 2px;
@@ -170,7 +170,7 @@
     -moz-transition: background-color 0.25s, border-color 0.25s;
     transition: background-color 0.25s, border-color 0.25s;
   }
-  
+
   .dots .dot span.active {
     border-color: #FFF;
     background-color: transparent;
@@ -184,13 +184,13 @@
     border: 20px solid #FFF;
     margin-top: 20px;
   }
-  
+
   .slide {
     position: absolute;
     top: 0;
     left: 0;
   }
-  
+
   .arrow {
     position: absolute;
     z-index: 1002;
@@ -201,40 +201,40 @@
     height: 71px;
     outline: none !important;
     cursor: pointer;
-    background: url(../assets/blank.gif) no-repeat;
+    background: url(../../assets/Carousel/blank.gif) no-repeat;
     border: none;
   }
-  
+
   .arrow.prev {
     opacity: 0.2;
     left: 20px;
-    background-image: url(../assets/paddle_prev_999.png);
+    background-image: url(../../assets/Carousel/paddle_prev_999.png);
     transition: 0.2s linear all;
   }
-  
+
   .arrow.next {
     opacity: 0.2;
     right: 20px;
-    background-image: url(../assets/paddle_next_999.png);
+    background-image: url(../../assets/Carousel/paddle_next_999.png);
     transition: 0.2s linear all;
   }
-  
+
   .arrow.prev:hover {
     opacity: 1;
-    background-image: url(../assets/paddle_prev_fff.png);
+    background-image: url(../../assets/Carousel/paddle_prev_fff.png);
   }
-  
+
   .arrow.next:hover {
     opacity: 1;
-    background-image: url(../assets/paddle_next_fff.png);
+    background-image: url(../../assets/Carousel/paddle_next_fff.png);
   }
-  
-  
-  
+
+
+
   /*---------------------------------------------------------
   NAV
   ---------------------------------------------------------*/
-  
+
   .nav {
     text-align: center;
     display: block;
@@ -245,35 +245,35 @@
     right: 0;
     height: 48px;
   }
-  
+
   .nonDraggableImage{
     -webkit-user-drag: none;
   }
-  
+
   .nav .wrapper {
     margin: 0 auto;
     width: 100%;
     padding: 1em 0 .8em;
   }
-  
+
   .nav ul {
     margin: 0;
     width: 100%;
   }
-  
+
   .nav .dot, .nav .dot span {
     display: inline-block;
     zoom: 1;
     cursor: pointer;
   }
-  
+
   .dots .dot {
     position: relative;
     margin: 0 8px;
     width: 12px;
     height: 12px;
   }
-  
+
   .dots .dot span {
     position: absolute;
     top: 2px;
@@ -296,7 +296,7 @@
     -moz-transition: background-color 0.25s, border-color 0.25s;
     transition: background-color 0.25s, border-color 0.25s;
   }
-  
+
   .dots .dot span.active {
     border-color: #FFF;
     background-color: transparent;
@@ -310,13 +310,13 @@
     border: 20px solid #FFF;
     margin-top: 20px;
   }
-  
+
   .slide {
     position: absolute;
     top: 0;
     left: 0;
   }
-  
+
   .arrow {
     position: absolute;
     z-index: 1002;
@@ -327,40 +327,40 @@
     height: 71px;
     outline: none !important;
     cursor: pointer;
-    background: url(../assets/blank.gif) no-repeat;
+    background: url(../../assets/Carousel/blank.gif) no-repeat;
     border: none;
   }
-  
+
   .arrow.prev {
     opacity: 0.2;
     left: 20px;
-    background-image: url(../assets/paddle_prev_999.png);
+    background-image: url(../../assets/Carousel/paddle_prev_999.png);
     transition: 0.2s linear all;
   }
-  
+
   .arrow.next {
     opacity: 0.2;
     right: 20px;
-    background-image: url(../assets/paddle_next_999.png);
+    background-image: url(../../assets/Carousel/paddle_next_999.png);
     transition: 0.2s linear all;
   }
-  
+
   .arrow.prev:hover {
     opacity: 1;
-    background-image: url(../assets/paddle_prev_fff.png);
+    background-image: url(../../assets/Carousel/paddle_prev_fff.png);
   }
-  
+
   .arrow.next:hover {
     opacity: 1;
-    background-image: url(../assets/paddle_next_fff.png);
+    background-image: url(../../assets/Carousel/paddle_next_fff.png);
   }
-  
-  
-  
+
+
+
   /*---------------------------------------------------------
   NAV
   ---------------------------------------------------------*/
-  
+
   .nav {
     text-align: center;
     display: block;
@@ -371,35 +371,35 @@
     right: 0;
     height: 48px;
   }
-  
+
   .nonDraggableImage{
     -webkit-user-drag: none;
   }
-  
+
   .nav .wrapper {
     margin: 0 auto;
     width: 100%;
     padding: 1em 0 .8em;
   }
-  
+
   .nav ul {
     margin: 0;
     width: 100%;
   }
-  
+
   .nav .dot, .nav .dot span {
     display: inline-block;
     zoom: 1;
     cursor: pointer;
   }
-  
+
   .dots .dot {
     position: relative;
     margin: 0 8px;
     width: 12px;
     height: 12px;
   }
-  
+
   .dots .dot span {
     position: absolute;
     top: 2px;
@@ -422,7 +422,7 @@
     -moz-transition: background-color 0.25s, border-color 0.25s;
     transition: background-color 0.25s, border-color 0.25s;
   }
-  
+
   .dots .dot span.active {
     border-color: #FFF;
     background-color: transparent;
@@ -436,13 +436,13 @@
     border: 20px solid #FFF;
     margin-top: 20px;
   }
-  
+
   .slide {
     position: absolute;
     top: 0;
     left: 0;
   }
-  
+
   .arrow {
     position: absolute;
     z-index: 1002;
@@ -453,40 +453,40 @@
     height: 71px;
     outline: none !important;
     cursor: pointer;
-    background: url(../assets/blank.gif) no-repeat;
+    background: url(../../assets/Carousel/blank.gif) no-repeat;
     border: none;
   }
-  
+
   .arrow.prev {
     opacity: 0.2;
     left: 20px;
-    background-image: url(../assets/paddle_prev_999.png);
+    background-image: url(../../assets/Carousel/paddle_prev_999.png);
     transition: 0.2s linear all;
   }
-  
+
   .arrow.next {
     opacity: 0.2;
     right: 20px;
-    background-image: url(../assets/paddle_next_999.png);
+    background-image: url(../../assets/Carousel/paddle_next_999.png);
     transition: 0.2s linear all;
   }
-  
+
   .arrow.prev:hover {
     opacity: 1;
-    background-image: url(../assets/paddle_prev_fff.png);
+    background-image: url(../../assets/Carousel/paddle_prev_fff.png);
   }
-  
+
   .arrow.next:hover {
     opacity: 1;
-    background-image: url(../assets/paddle_next_fff.png);
+    background-image: url(../../assets/Carousel/paddle_next_fff.png);
   }
-  
-  
-  
+
+
+
   /*---------------------------------------------------------
   NAV
   ---------------------------------------------------------*/
-  
+
   .nav {
     text-align: center;
     display: block;
@@ -497,35 +497,35 @@
     right: 0;
     height: 48px;
   }
-  
+
   .nonDraggableImage{
     -webkit-user-drag: none;
   }
-  
+
   .nav .wrapper {
     margin: 0 auto;
     width: 100%;
     padding: 1em 0 .8em;
   }
-  
+
   .nav ul {
     margin: 0;
     width: 100%;
   }
-  
+
   .nav .dot, .nav .dot span {
     display: inline-block;
     zoom: 1;
     cursor: pointer;
   }
-  
+
   .dots .dot {
     position: relative;
     margin: 0 8px;
     width: 12px;
     height: 12px;
   }
-  
+
   .dots .dot span {
     position: absolute;
     top: 2px;
@@ -548,7 +548,7 @@
     -moz-transition: background-color 0.25s, border-color 0.25s;
     transition: background-color 0.25s, border-color 0.25s;
   }
-  
+
   .dots .dot span.active {
     border-color: #FFF;
     background-color: transparent;
@@ -562,13 +562,13 @@
     border: 20px solid #FFF;
     margin-top: 20px;
   }
-  
+
   .slide {
     position: absolute;
     top: 0;
     left: 0;
   }
-  
+
   .arrow {
     position: absolute;
     z-index: 1002;
@@ -579,40 +579,40 @@
     height: 71px;
     outline: none !important;
     cursor: pointer;
-    background: url(../assets/blank.gif) no-repeat;
+    background: url(../../assets/Carousel/blank.gif) no-repeat;
     border: none;
   }
-  
+
   .arrow.prev {
     opacity: 0.2;
     left: 20px;
-    background-image: url(../assets/paddle_prev_999.png);
+    background-image: url(../../assets/Carousel/paddle_prev_999.png);
     transition: 0.2s linear all;
   }
-  
+
   .arrow.next {
     opacity: 0.2;
     right: 20px;
-    background-image: url(../assets/paddle_next_999.png);
+    background-image: url(../../assets/Carousel/paddle_next_999.png);
     transition: 0.2s linear all;
   }
-  
+
   .arrow.prev:hover {
     opacity: 1;
-    background-image: url(../assets/paddle_prev_fff.png);
+    background-image: url(../../assets/Carousel/paddle_prev_fff.png);
   }
-  
+
   .arrow.next:hover {
     opacity: 1;
-    background-image: url(../assets/paddle_next_fff.png);
+    background-image: url(../../assets/Carousel/paddle_next_fff.png);
   }
-  
-  
-  
+
+
+
   /*---------------------------------------------------------
   NAV
   ---------------------------------------------------------*/
-  
+
   .nav {
     text-align: center;
     display: block;
@@ -623,35 +623,35 @@
     right: 0;
     height: 48px;
   }
-  
+
   .nonDraggableImage{
     -webkit-user-drag: none;
   }
-  
+
   .nav .wrapper {
     margin: 0 auto;
     width: 100%;
     padding: 1em 0 .8em;
   }
-  
+
   .nav ul {
     margin: 0;
     width: 100%;
   }
-  
+
   .nav .dot, .nav .dot span {
     display: inline-block;
     zoom: 1;
     cursor: pointer;
   }
-  
+
   .dots .dot {
     position: relative;
     margin: 0 8px;
     width: 12px;
     height: 12px;
   }
-  
+
   .dots .dot span {
     position: absolute;
     top: 2px;
@@ -674,7 +674,7 @@
     -moz-transition: background-color 0.25s, border-color 0.25s;
     transition: background-color 0.25s, border-color 0.25s;
   }
-  
+
   .dots .dot span.active {
     border-color: #FFF;
     background-color: transparent;
