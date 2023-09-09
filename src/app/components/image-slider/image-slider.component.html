@@ -1,4 +1,4 @@
-<div class="container slider">
+<div class="slider">
   <div>
     <ng-template ngFor [ngForOf]="images" let-image let-i="index">
       <img
@@ -13,17 +13,4 @@
 
   <button class="arrow prev" (click)="nextSlide()"></button>
   <button class="arrow next" (click)="prevSlide()"></button>
-  <nav class="nav">
-    <div class="wrapper">
-      <ul class="dots">
-        <li class="dot" *ngFor="let slide of slides; let i = index">
-          <span
-            [ngClass]="{ active: isCurrentSlideIndex(i) }"
-            (click)="setCurrentSlideIndex(i)"
-            >{{ slide.description }}</span
-          >
-        </li>
-      </ul>
-    </div>
-  </nav>
 </div>
