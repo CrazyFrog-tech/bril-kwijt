@@ -19,7 +19,9 @@
     "target": "ES2022",
     "module": "ES2022",
     "useDefineForClassFields": false,
-    "lib": ["ES2022", "es5", "es6", "dom", "dom.iterable"]
+    "lib": ["ES2022", "es5", "es6", "dom", "dom.iterable"],
+    "strictPropertyInitialization": false
+
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

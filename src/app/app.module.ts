@@ -22,6 +22,8 @@ import { BrilListItemComponent } from './components/bril-list-item/bril-list-ite
 import { BrilAdvertentieComponent } from './components/bril-advertentie/bril-advertentie.component';
 import { BrilService } from './services/bril.service';
 import { ImageSliderComponent } from './components/image-slider/image-slider.component';
+import { FormsModule } from '@angular/forms';
+import { AddressFromComponentComponent } from './components/address-from-component/address-from-component.component';
 
 @NgModule({
   declarations: [
@@ -33,9 +35,11 @@ import { ImageSliderComponent } from './components/image-slider/image-slider.com
     BrilListItemComponent,
     BrilAdvertentieComponent,
     ImageSliderComponent,
+    AddressFromComponentComponent,
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,

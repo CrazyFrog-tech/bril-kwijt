@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col">
+    <mat-form-field class="full-width">
+        <input matInput placeholder="Address" formControlName="address" />
+      <mat-error *ngIf="addressForm.controls['address'].hasError('required')">
+        Address is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <mat-form-field class="full-width">
+      <input matInput placeholder="City" formControlName="city" />
+      <mat-error *ngIf="addressForm.controls['city'].hasError('required')">
+        City is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <mat-form-field class="full-width">
+      <input
+        matInput
+        #postalCode
+        maxlength="6"
+        placeholder="Postal Code"
+        type="string"
+        formControlName="postalCode"
+      />
+      <mat-hint align="end">{{ postalCode.value.length }} / 6</mat-hint>
+    </mat-form-field>
+  </div>
+  <div class="col">
+    <mat-form-field class="full-width">
+        <input matInput placeholder="HouseNr" formControlName="houseNr" />
+        <mat-error *ngIf="addressForm.controls['houseNr'].hasError('required')">
+          City is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+</div>
+</div>

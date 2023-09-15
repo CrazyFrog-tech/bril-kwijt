@@ -27,15 +27,8 @@
       </mat-form-field>
       <form [formGroup]="address">
         <mat-card>
-          <mat-card-title>Auto Parse Address</mat-card-title>
           <mat-card-content>
-            <mat-search-google-maps-autocomplete
-              (onGermanAddressMapped)="onAutoCompleteSelected($event)"
-              formControlName="address"
-              appearance="outline"
-              country="nl"
-            >
-          </mat-search-google-maps-autocomplete>
+          <app-address-from-component></app-address-from-component>
           </mat-card-content>
         </mat-card>
       </form>
