@@ -1,4 +1,3 @@
-
 <div class="background">
   <div class="container">
     <mat-spinner *ngIf="displayProgressSpinner"></mat-spinner>
@@ -25,14 +24,7 @@
         ></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
-      <form [formGroup]="address">
-        <mat-card>
-          <mat-card-content>
-          <app-address-from-component></app-address-from-component>
-          </mat-card-content>
-        </mat-card>
-      </form>
-
+      <app-address-from-component></app-address-from-component>
       <mat-form-field class="inputField" appearance="outline">
         <mat-label>Beschrijving</mat-label>
         <div [formGroup]="descriptionFormGroup">
