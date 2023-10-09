@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import PlaceResult = google.maps.places.PlaceResult;
+
 
 @Component({
   selector: 'app-address-from-component',
@@ -7,8 +9,10 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./address-from-component.component.css']
 })
 export class AddressFromComponentComponent {
+  @Output() mapEmitted: EventEmitter<Map<string, string>> = new EventEmitter<Map<string, string>>();
+
   addressForm = this.fb.group({
-    address: [null, Validators.required],
+    street: [null, Validators.required],
     city: [null, Validators.required],
     houseNr: [null, Validators.required],
     postalCode: [
@@ -19,12 +23,40 @@ export class AddressFromComponentComponent {
         Validators.maxLength(6)
       ])
     ],
-    shipping: ["free", Validators.required]
   });
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder) {
+    debugger
+    if(this.addressForm.valid){
+      let addressMap = this.makeAddresMap();
+      this.mapEmitted.emit(addressMap);
+    }
+  }
+  private makeAddresMap() {
+    let mapData = new Map<string, string>();
 
 
-  hasUnitNumber = false;
+    let streetValue = this.extractFormControlValue(this.addressForm.controls.street);
+    let cityValue = this.extractFormControlValue(this.addressForm.controls.city);
+    let postalCodeValue = this.extractFormControlValue(this.addressForm.controls.postalCode);
+    let houseNrValue = this.extractFormControlValue(this.addressForm.controls.houseNr);
+    mapData.set('street', streetValue);
+    mapData.set('city', cityValue);
+    mapData.set('postalCode', postalCodeValue);
+    mapData.set('houseNr', houseNrValue);
+    return mapData;
+  }
+
+  extractFormControlValue(formcontrol: FormControl){
+    return formcontrol.value !== null
+    ? formcontrol.value as string
+    : '';
+  }
+onInputChange(event: any){
+  if(this.addressForm.valid){
+    let addressMap = this.makeAddresMap();
+    this.mapEmitted.emit(addressMap);
+  }
+}
 
 }

@@ -24,7 +24,7 @@
         ></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
-      <app-address-from-component></app-address-from-component>
+      <app-address-from-component (mapEmitted)="handleAddress($event)"></app-address-from-component>
       <mat-form-field class="inputField" appearance="outline">
         <mat-label>Beschrijving</mat-label>
         <div [formGroup]="descriptionFormGroup">

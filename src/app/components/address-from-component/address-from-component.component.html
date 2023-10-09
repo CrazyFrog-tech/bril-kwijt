@@ -5,9 +5,9 @@
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-              <input matInput placeholder="Address" formControlName="address" />
-            <mat-error *ngIf="addressForm.controls['address'].hasError('required')">
-              Address is <strong>required</strong>
+              <input matInput  placeholder="Street" formControlName="street" (change)="onInputChange($event)"/>
+            <mat-error *ngIf="addressForm.controls['street'].hasError('required')">
+              Street is <strong>required</strong>
             </mat-error>
           </mat-form-field>
         </div>
@@ -15,7 +15,7 @@
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="City" formControlName="city" />
+            <input  matInput placeholder="City" formControlName="city" (change)="onInputChange($event)" />
             <mat-error *ngIf="addressForm.controls['city'].hasError('required')">
               City is <strong>required</strong>
             </mat-error>
@@ -32,15 +32,16 @@
               placeholder="Postal Code"
               type="string"
               formControlName="postalCode"
+              (change)="onInputChange($event)"
             />
             <mat-hint align="end">{{ postalCode.value.length }} / 6</mat-hint>
           </mat-form-field>
         </div>
         <div class="col">
           <mat-form-field class="half-width">
-              <input matInput placeholder="HouseNr" formControlName="houseNr" />
+              <input matInput placeholder="HouseNr" formControlName="houseNr" (change)="onInputChange($event)"/>
               <mat-error *ngIf="addressForm.controls['houseNr'].hasError('required')">
-                City is <strong>required</strong>
+                House number is <strong>required</strong>
               </mat-error>
           </mat-form-field>
         </div>

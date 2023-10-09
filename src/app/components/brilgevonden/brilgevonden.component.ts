@@ -44,16 +44,6 @@ export class BrilgevondenComponent {
 
   constructor(private router: Router, private apiService: ApiService) {}
 
-  onAutoCompleteSelected(result: GermanAddress) {
-    let street = result.streetName || '';
-    let houseNr = result.streetNumber || '';
-    let zipCode = result.postalCode || '';
-    let city = result.state?.long || '';
-
-    this.addressObject = new Address(street, houseNr, '' + zipCode, city);
-
-    console.log('onAutocompleteSelected: ', result);
-  }
   getSelectedFiles(event: any): void {
     this.selectedFiles = event.target.files;
   }
@@ -100,4 +90,12 @@ export class BrilgevondenComponent {
   }
 
   uploadDescription() {}
+
+  handleAddress(mapData: Map<string, string>){
+    debugger;
+    mapData.forEach((value, key) => {
+      console.log(`Key: ${key}, Value: ${value}`);
+    });
+
+  }
 }
