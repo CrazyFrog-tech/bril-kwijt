@@ -16,7 +16,8 @@
       </mat-form-field>
       <mat-form-field>
         <mat-label>Choose a date</mat-label>
-        <input matInput formControlName="lostAt" [matDatepicker]="picker" />
+        <div [formGroup]="lostAtFormGroup">
+          <input matInput formControlName="lostAt" [matDatepicker]="picker" /></div>
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle
           matIconSuffix
@@ -24,7 +25,7 @@
         ></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
-      <app-address-from-component (mapEmitted)="handleAddress($event)"></app-address-from-component>
+      <app-address-from-component (addressEmitted)="handleAddress($event)"></app-address-from-component>
       <mat-form-field class="inputField" appearance="outline">
         <mat-label>Beschrijving</mat-label>
         <div [formGroup]="descriptionFormGroup">

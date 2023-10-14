@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import PlaceResult = google.maps.places.PlaceResult;
+import { Address } from 'src/app/dao/address';
 
 
 @Component({
@@ -9,7 +10,7 @@ import PlaceResult = google.maps.places.PlaceResult;
   styleUrls: ['./address-from-component.component.css']
 })
 export class AddressFromComponentComponent {
-  @Output() mapEmitted: EventEmitter<Map<string, string>> = new EventEmitter<Map<string, string>>();
+  @Output() addressEmitted: EventEmitter<Address> = new EventEmitter<Address>();
 
   addressForm = this.fb.group({
     street: [null, Validators.required],
@@ -26,25 +27,18 @@ export class AddressFromComponentComponent {
   });
 
   constructor(private fb: FormBuilder) {
-    debugger
     if(this.addressForm.valid){
       let addressMap = this.makeAddresMap();
-      this.mapEmitted.emit(addressMap);
+      this.addressEmitted.emit(addressMap);
     }
   }
   private makeAddresMap() {
-    let mapData = new Map<string, string>();
-
-
     let streetValue = this.extractFormControlValue(this.addressForm.controls.street);
     let cityValue = this.extractFormControlValue(this.addressForm.controls.city);
     let postalCodeValue = this.extractFormControlValue(this.addressForm.controls.postalCode);
     let houseNrValue = this.extractFormControlValue(this.addressForm.controls.houseNr);
-    mapData.set('street', streetValue);
-    mapData.set('city', cityValue);
-    mapData.set('postalCode', postalCodeValue);
-    mapData.set('houseNr', houseNrValue);
-    return mapData;
+    let addressData = new Address(streetValue, houseNrValue, postalCodeValue, cityValue);
+    return addressData;
   }
 
   extractFormControlValue(formcontrol: FormControl){
@@ -55,7 +49,8 @@ export class AddressFromComponentComponent {
 onInputChange(event: any){
   if(this.addressForm.valid){
     let addressMap = this.makeAddresMap();
-    this.mapEmitted.emit(addressMap);
+    console.log(addressMap);
+    this.addressEmitted.emit(addressMap);
   }
 }
 

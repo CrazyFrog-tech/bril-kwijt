@@ -32,7 +32,7 @@ export class BrilgevondenComponent {
     titel: new FormControl(''),
   });
 
-  addressObject!: Address;
+  addressObject: Address;
 
   lostAtFormGroup = new FormGroup({
     lostAt: new FormControl(new Date()),
@@ -42,7 +42,9 @@ export class BrilgevondenComponent {
     address: new FormControl(''),
   });
 
-  constructor(private router: Router, private apiService: ApiService) {}
+  constructor(private router: Router, private apiService: ApiService) {
+    this.addressObject = new Address();
+  }
 
   getSelectedFiles(event: any): void {
     this.selectedFiles = event.target.files;
@@ -69,9 +71,6 @@ export class BrilgevondenComponent {
       this.addressObject
     );
     formData.append('bril', JSON.stringify(fakeBril));
-    for (var pair of formData.entries()) {
-      console.log(pair[0] + ', ' + pair[1]);
-    }
     this.apiService.addFakeBril(formData).subscribe({
       next: (value) => {
         this.displayProgressSpinner = true;
@@ -85,17 +84,13 @@ export class BrilgevondenComponent {
     });
     this.displayProgressSpinner = false;
 
-    // DEBUG YHR POST METHOD WHY IT DOEN'T WORK
     this.router.navigate(['/homescreen']);
   }
 
   uploadDescription() {}
 
-  handleAddress(mapData: Map<string, string>){
-    debugger;
-    mapData.forEach((value, key) => {
-      console.log(`Key: ${key}, Value: ${value}`);
-    });
-
+  handleAddress(addressData: any){
+    this.addressObject = addressData as Address;
+    
   }
 }
