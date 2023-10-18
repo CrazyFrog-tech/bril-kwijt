@@ -1,3 +1,7 @@
-1- add google maps to address for world wide
-2- add validation for the form
-3- make form width better for all fields
+
+1- make form width better for all fields
+2- add color field in both frontend and backend
+3- date formatting like this 15-11-1997
+4- add optional field (brand to the form)
+5- better background for the page.
+6- popup on success to go to the home page.
