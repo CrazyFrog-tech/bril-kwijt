@@ -1,5 +1,5 @@
 .full-width {
-    width: 100%;
+    width: 95%;
   }
 
   .half-width {
@@ -19,6 +19,8 @@
   .row {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    width: 95%;
   }
   
   .col {
