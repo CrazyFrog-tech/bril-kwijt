@@ -25,18 +25,13 @@ export class BrilgevondenComponent {
   displayProgressSpinner: boolean = false;
   selectedFiles: FileList | null = null;
   post: any = '';
-  descriptionFormGroup = new FormGroup({
+  brilDetails = new FormGroup({
     description: new FormControl(''),
-  });
-  titelFormGroup = new FormGroup({
     titel: new FormControl(''),
-  });
-
-  addressObject: Address;
-
-  lostAtFormGroup = new FormGroup({
     lostAt: new FormControl(new Date()),
+
   });
+  addressObject: Address;
 
   address = new FormGroup({
     address: new FormControl(''),
@@ -53,10 +48,10 @@ export class BrilgevondenComponent {
   goHome() {
     this.displayProgressSpinner = true;
     //todo getting specifik data from the address.
-    let titel = this.titelFormGroup.controls['titel'].value as string;
-    let description = this.descriptionFormGroup.controls['description']
+    let titel = this.brilDetails.controls['titel'].value as string;
+    let description = this.brilDetails.controls['description']
       .value as string;
-    let dateLostAt = this.lostAtFormGroup.controls['lostAt'].value as Date;
+    let dateLostAt = this.brilDetails.controls['lostAt'].value as Date;
     let formData = new FormData();
 
     if (this.selectedFiles && this.selectedFiles.length) {
