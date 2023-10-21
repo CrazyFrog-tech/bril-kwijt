@@ -29,7 +29,7 @@ export class BrilgevondenComponent {
     description: new FormControl(''),
     titel: new FormControl(''),
     lostAt: new FormControl(new Date()),
-
+    color: new FormControl(''),
   });
   addressObject: Address;
 
@@ -52,6 +52,8 @@ export class BrilgevondenComponent {
     let description = this.brilDetails.controls['description']
       .value as string;
     let dateLostAt = this.brilDetails.controls['lostAt'].value as Date;
+    let color = this.brilDetails.controls['color'].value as string;
+
     let formData = new FormData();
 
     if (this.selectedFiles && this.selectedFiles.length) {
@@ -63,7 +65,8 @@ export class BrilgevondenComponent {
       titel,
       description,
       dateLostAt,
-      this.addressObject
+      this.addressObject,
+      color,
     );
     formData.append('bril', JSON.stringify(fakeBril));
     this.apiService.addFakeBril(formData).subscribe({
