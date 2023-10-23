@@ -1,19 +1,10 @@
-import { Component, Directive } from '@angular/core';
+import { Component } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import {
-  FormGroup,
-  FormControl,
-  FormsModule,
-  ReactiveFormsModule,
-  FormBuilder,
-  Validators,
-} from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-import { ApiService } from '../../services/api.service';
-import { FakeBril } from '../../dao/fakebril';
 import { Address } from '../../dao/address';
+import { FakeBril } from '../../dao/fakebril';
+import { ApiService } from '../../services/api.service';
 import PlaceResult = google.maps.places.PlaceResult;
-import { GermanAddress } from '@angular-material-extensions/google-maps-autocomplete';
 
 @Component({
   selector: 'app-brilgevonden',
@@ -30,6 +21,7 @@ export class BrilgevondenComponent {
     titel: new FormControl(''),
     lostAt: new FormControl(new Date()),
     color: new FormControl(''),
+    brand: new FormControl (''),
   });
   addressObject: Address;
 
@@ -49,10 +41,11 @@ export class BrilgevondenComponent {
     this.displayProgressSpinner = true;
     //todo getting specifik data from the address.
     let titel = this.brilDetails.controls['titel'].value as string;
-    let description = this.brilDetails.controls['description']
-      .value as string;
-    let dateLostAt = this.brilDetails.controls['lostAt'].value as Date;
+    let description = this.brilDetails.controls['description'].value as string;
+    let dateLostAt =this.exposeDate(this.brilDetails.controls['lostAt'].value as Date);
     let color = this.brilDetails.controls['color'].value as string;
+    let brand = this.brilDetails.controls['brand'].value as string;
+
 
     let formData = new FormData();
 
@@ -67,6 +60,7 @@ export class BrilgevondenComponent {
       dateLostAt,
       this.addressObject,
       color,
+      brand
     );
     formData.append('bril', JSON.stringify(fakeBril));
     this.apiService.addFakeBril(formData).subscribe({
@@ -87,8 +81,15 @@ export class BrilgevondenComponent {
 
   uploadDescription() {}
 
-  handleAddress(addressData: any){
+  exposeDate(date: Date) {
+    let dateObj = date;
+    let month = dateObj.getUTCMonth() + 1; //months from 1-12
+    let day = dateObj.getUTCDate();
+    let year = dateObj.getUTCFullYear();
+    return year + '/' + month + '/' + day;
+  }
+
+  handleAddress(addressData: any) {
     this.addressObject = addressData as Address;
-    
   }
 }

@@ -5,10 +5,9 @@ body, h1, h2, h3, p, ul, li {
   font-family: Arial, sans-serif;
 }
 .background {
-  overflow: scroll;
+  overflow-y: scroll;
   height: 100%;
   width: 100%;
-  background: linear-gradient(to bottom right, #1100ff, #ff6bf3);
 }
 
 /* Apply responsive styles to the container */

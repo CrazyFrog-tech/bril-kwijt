@@ -17,7 +17,8 @@
       <mat-form-field>
         <mat-label>Choose a date</mat-label>
         <div [formGroup]="brilDetails">
-          <input matInput formControlName="lostAt" [matDatepicker]="picker" /></div>
+          <input matInput formControlName="lostAt" [matDatepicker]="picker" />
+        </div>
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle
           matIconSuffix
@@ -25,28 +26,40 @@
         ></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
-      <app-address-from-component (addressEmitted)="handleAddress($event)"></app-address-from-component>
-        <mat-label>Beschrijving</mat-label>
-        <mat-form-field>
-          <div [formGroup]="brilDetails">
-            <input
-              type="text"
-              matInput
-              placeholder="Beschrijving"
-              formControlName="description"
-            />
-          </div>
-        </mat-form-field>
-        <mat-form-field>
-          <div [formGroup]="brilDetails">
-            <input
-              type="text"
-              matInput
-              placeholder="Color"
-              formControlName="color"
-            />
-          </div>
-        </mat-form-field>
+      <app-address-from-component
+        (addressEmitted)="handleAddress($event)"
+      ></app-address-from-component>
+      <mat-label>Beschrijving</mat-label>
+      <mat-form-field>
+        <div [formGroup]="brilDetails">
+          <input
+            type="text"
+            matInput
+            placeholder="Beschrijving"
+            formControlName="description"
+          />
+        </div>
+      </mat-form-field>
+      <mat-form-field>
+        <div [formGroup]="brilDetails">
+          <input
+            type="text"
+            matInput
+            placeholder="Color"
+            formControlName="color"
+          />
+        </div>
+      </mat-form-field>
+      <mat-form-field>
+        <div [formGroup]="brilDetails">
+          <input
+            type="text"
+            matInput
+            placeholder="Brand(optional)"
+            formControlName="brand"
+          />
+        </div>
+      </mat-form-field>
       <div class="container">
         <app-upload-images
           (change)="getSelectedFiles($event)"
