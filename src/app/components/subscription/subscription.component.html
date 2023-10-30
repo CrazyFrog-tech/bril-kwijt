@@ -1,0 +1,16 @@
+<div class="subscription-container">
+    <mat-card *ngFor="let option of subscriptionOptions" class="subscription-card">
+      <mat-card-header>
+        <mat-card-subtitle class="populartiy">{{option.popularity}}</mat-card-subtitle>
+        <mat-card-subtitle class="subscription-type">{{option.duration}}</mat-card-subtitle>
+        <mat-card-title class="subscription-price">&euro; {{ option.price}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content *ngFor="let item of option.details">
+        <p class="price"> {{ item }}</p>
+      </mat-card-content>
+      <mat-card-actions class="button-container">
+        <button mat-flat-button color="primary" class="subscribe-button">Subscribe</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  
