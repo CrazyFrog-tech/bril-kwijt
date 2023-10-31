@@ -11,8 +11,8 @@
 .subscription-card {
   width: 25%;
   max-width: 300px;
-  height: 60%;
-  max-height: 900px;
+  height: 65%;
+  max-height: 1000px;
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -58,7 +58,7 @@ mat-card-header {
 }
 
 .subscribe-button:hover {
-  background-color: #3407fc; /* Change color on hover */
+  background-color: #0022ff; /* Change color on hover */
 }
 .button-container {
   position: absolute;
@@ -90,4 +90,8 @@ mat-card-header {
   font-weight: 400;
   padding-bottom: 10%;
 
+}
+
+.card-content {
+  margin: 10px;
 }

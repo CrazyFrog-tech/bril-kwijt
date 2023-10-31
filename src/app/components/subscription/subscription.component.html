@@ -5,8 +5,9 @@
         <mat-card-subtitle class="subscription-type">{{option.duration}}</mat-card-subtitle>
         <mat-card-title class="subscription-price">&euro; {{ option.price}}</mat-card-title>
       </mat-card-header>
-      <mat-card-content *ngFor="let item of option.details">
-        <p class="price"> {{ item }}</p>
+      <mat-card-content class="card-content" *ngFor="let item of option.details">
+        <ul><li class="price"> {{ item }}</li></ul>
+        
       </mat-card-content>
       <mat-card-actions class="button-container">
         <button mat-flat-button color="primary" class="subscribe-button">Subscribe</button>
