@@ -10,9 +10,11 @@ import { SubscriptionComponent } from './components/subscription/subscription.co
 const routes: Routes = [
   { path: '', component: AppComponent },
   { path: 'brilgevonden', component: BrilgevondenComponent },
-  { path: 'homescreen', component: SubscriptionComponent },
+  { path: 'homescreen', component: HomescreenComponent },
   { path: 'gevondenbrillen', component: brillenLijstComponent },
   { path: 'briladvertentie', component: BrilAdvertentieComponent },
+  { path: 'subscriptions', component: SubscriptionComponent },
+
 ];
 
 // configures NgModule imports and exports

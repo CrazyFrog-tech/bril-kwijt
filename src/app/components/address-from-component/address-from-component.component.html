@@ -6,12 +6,10 @@
           <mat-form-field class="full-width">
             <input
               matInput
-              matGoogleMapsAutocomplete
               country="NL"
               placeholder="Find your address"
               formControlName="address"
               (change)="onInputChange($event)"
-              (onAutocompleteSelected)="fillInAddressForm($event)"
             />
           </mat-form-field>
         </div>

@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { Address } from '../../dao/address';
 import { FakeBril } from '../../dao/fakebril';
 import { ApiService } from '../../services/api.service';
-import PlaceResult = google.maps.places.PlaceResult;
 
 @Component({
   selector: 'app-brilgevonden',
@@ -12,7 +11,6 @@ import PlaceResult = google.maps.places.PlaceResult;
   styleUrls: ['./brilgevonden.component.css'],
 })
 export class BrilgevondenComponent {
-  public selectedAddress!: PlaceResult;
   displayProgressSpinner: boolean = false;
   selectedFiles: FileList | null = null;
   post: any = '';
@@ -90,6 +88,6 @@ export class BrilgevondenComponent {
   }
 
   handleAddress(addressData: any) {
-    this.addressObject = addressData as Address;
+    this.addressObject = addressData as Address || new Address("st", "1", "1212vb", "ct");
   }
 }

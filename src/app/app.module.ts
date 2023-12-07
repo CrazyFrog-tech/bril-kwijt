@@ -15,8 +15,6 @@ import { BrilgevondenComponent } from './components/brilgevonden/brilgevonden.co
 import { HomescreenComponent } from './components/homescreen/homescreen.component';
 import { MaterialModule } from './material-module';
 import { UploadImagesComponent } from './components/upload-images/upload-images.component';
-import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/google-maps-autocomplete';
-import { AgmCoreModule } from '@agm/core';
 import { brillenLijstComponent } from './components/brillen-lijst/brillen-lijst.component';
 import { BrilListItemComponent } from './components/bril-list-item/bril-list-item.component';
 import { BrilAdvertentieComponent } from './components/bril-advertentie/bril-advertentie.component';
@@ -25,6 +23,7 @@ import { ImageSliderComponent } from './components/image-slider/image-slider.com
 import { FormsModule } from '@angular/forms';
 import { AddressFromComponentComponent } from './components/address-from-component/address-from-component.component';
 import { SubscriptionComponent } from './components/subscription/subscription.component';
+import {AuthModule} from "@auth0/auth0-angular";
 
 @NgModule({
   declarations: [
@@ -51,11 +50,13 @@ import { SubscriptionComponent } from './components/subscription/subscription.co
     MatToolbarModule,
     MaterialModule,
     HttpClientModule,
-    MatGoogleMapsAutocompleteModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyC5GlLUadijlWkWIRdpFDaYhHyVEWrpENc',
-      libraries: ['places'],
-    }),
+    AuthModule.forRoot({
+      domain: 'dev-8k5u5q2o5koo17tb.us.auth0.com',
+      clientId: 'uCIlaYCCY6iptKAw0dvpUc5Ce6g8rlEO',
+      authorizationParams: {
+        redirect_uri: 'http://localhost:4200/homescreen'
+      }
+    })
   ],
   providers: [BrilService],
   bootstrap: [AppComponent],
