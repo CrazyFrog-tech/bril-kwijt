@@ -52,10 +52,7 @@ import {AuthModule} from "@auth0/auth0-angular";
     HttpClientModule,
     AuthModule.forRoot({
       domain: 'dev-8k5u5q2o5koo17tb.us.auth0.com',
-      clientId: 'uCIlaYCCY6iptKAw0dvpUc5Ce6g8rlEO',
-      authorizationParams: {
-        redirect_uri: 'http://localhost:4200/homescreen'
-      }
+      clientId: 'uCIlaYCCY6iptKAw0dvpUc5Ce6g8rlEO'
     })
   ],
   providers: [BrilService],
