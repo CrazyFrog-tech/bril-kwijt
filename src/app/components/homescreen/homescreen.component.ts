@@ -33,15 +33,10 @@ export class HomescreenComponent {
   }
   goToGevondenBrillen() {
     console.log('/gevondenbrillen');
-    this.router.navigateByUrl('/gevondenbrillen');
+    this.router.navigate(['/gevondenbrillen']);
   }
   login() {
-    this.auth.loginWithRedirect({
-      authorizationParams: {
-      redirect_uri: 'http://localhost:4200/homescreen'
-      }});
-    this.router.navigateByUrl('/gevondenbrillen');
-
+    this.auth.loginWithRedirect();
   }
 
   logout() {
