@@ -6,13 +6,12 @@ import { HomescreenComponent } from './components/homescreen/homescreen.componen
 import { brillenLijstComponent } from './components/brillen-lijst/brillen-lijst.component';
 import { BrilAdvertentieComponent } from './components/bril-advertentie/bril-advertentie.component';
 import { SubscriptionComponent } from './components/subscription/subscription.component';
-import {AuthGuard} from "@auth0/auth0-angular";
 
 const routes: Routes = [
   { path: '', component: AppComponent },
-  { path: 'brilgevonden', component: BrilgevondenComponent, canActivate: [AuthGuard] },
+  { path: 'brilgevonden', component: BrilgevondenComponent },
   { path: 'homescreen', component: HomescreenComponent },
-  { path: 'gevondenbrillen', component: brillenLijstComponent, canActivate: [AuthGuard] },
+  { path: 'gevondenbrillen', component: brillenLijstComponent },
   { path: 'briladvertentie', component: BrilAdvertentieComponent },
   { path: 'subscriptions', component: SubscriptionComponent },
 
