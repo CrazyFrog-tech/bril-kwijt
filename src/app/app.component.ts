@@ -8,8 +8,7 @@ import { BrilgevondenComponent } from './components/brilgevonden/brilgevonden.co
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor() {}
   ngOnInit(): void {
-    // this.router.navigate(['/homescreen']);
   }
 }
