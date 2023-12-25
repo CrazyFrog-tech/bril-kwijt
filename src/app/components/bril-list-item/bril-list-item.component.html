@@ -4,7 +4,11 @@
     [src]="brilListItem.imageContent"
     alt="Image"
   >
-  <h3 matListItemTitle>{{ brilListItem.titel }}</h3>
+  <h3 matListItemTitle>{{ brilListItem.titel + ", in " + brilListItem.address.city }}</h3>
   <p matListItemLine>
+    {{' Street ' + brilListItem.address.street}}
+    {{', Date Lost ' + brilListItem.lostAtDate}}
+    {{', brand ' + brilListItem.brand}}
+
       </p>
 </mat-list-item>
