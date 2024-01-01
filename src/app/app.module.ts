@@ -24,6 +24,7 @@ import { FormsModule } from '@angular/forms';
 import { AddressFromComponentComponent } from './components/address-from-component/address-from-component.component';
 import { SubscriptionComponent } from './components/subscription/subscription.component';
 import {AuthModule} from "@auth0/auth0-angular";
+import { ChatComponent } from './components/chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import {AuthModule} from "@auth0/auth0-angular";
     ImageSliderComponent,
     AddressFromComponentComponent,
     SubscriptionComponent,
+    ChatComponent,
   ],
   imports: [
     BrowserModule,
