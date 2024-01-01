@@ -1,6 +1,5 @@
-<mat-card *ngIf="bril">
+<mat-card class="card" *ngIf="bril">
   <div class="container" *ngIf="images">
-        <!-- TODO fix here -->
     <app-image-slider [images]="images"></app-image-slider>
   </div>
       <mat-card-header>
