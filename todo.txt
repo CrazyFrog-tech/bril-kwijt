@@ -1,7 +1,11 @@
 
-1- make form width better for all fields
-2- add color field in both frontend and backend
-3- date formatting like this 15-11-1997
-4- add optional field (brand to the form)
-5- better background for the page.
-6- popup on success to go to the home page.
+1- we need to add user to each advertisment
+https://github.com/andreavirgilio99/WebChat-springboot-angular
+
+chatcontroller needs to be done
+
+continue working on chat frontend
+continue watching the video and implementing the code
+you need to see what we want to do with the user because we need the user and his user name
+
+https://github.com/stylepatrick/websocket-chat-spring-boot-angular
