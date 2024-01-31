@@ -25,6 +25,7 @@ import { AddressFromComponentComponent } from './components/address-from-compone
 import { SubscriptionComponent } from './components/subscription/subscription.component';
 import {AuthModule} from "@auth0/auth0-angular";
 import { ChatComponent } from './components/chat/chat.component';
+import {CustomerService} from "./services/customer.service";
 
 @NgModule({
   declarations: [

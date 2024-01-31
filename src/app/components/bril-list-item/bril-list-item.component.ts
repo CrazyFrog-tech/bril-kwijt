@@ -11,7 +11,6 @@ export class BrilListItemComponent implements OnInit{
   @Input() brilListItem!: BrilListItem;
   constructor(private router: Router, private brilIdService: BrilService) {}
   ngOnInit(): void {
-    console.log(this.brilListItem);
     }
 
 

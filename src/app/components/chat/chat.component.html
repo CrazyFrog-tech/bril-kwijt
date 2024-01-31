@@ -24,7 +24,7 @@
         <div *ngFor="let msg of messages | async">
           <div
             class="d-flex justify-content-start mb-4"
-            *ngIf="msg.sender === otherUser!.nickname; else thisUserMsg"
+            *ngIf="msg.sender === otherUser!.customerName; else thisUserMsg"
           >
             <div class="img_cont_msg">
             </div>

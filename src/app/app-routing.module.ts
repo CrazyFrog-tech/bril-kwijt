@@ -10,7 +10,7 @@ import {ChatComponent} from "./components/chat/chat.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/homescreen', pathMatch: 'full'}, // Default redirection to 'home'
-  {path: 'brilgevonden', component: BrilgevondenComponent},
+  {path: 'brilgevonden', component: BrilgevondenComponent, canActivate: [AuthGuard]},
   {path: 'homescreen', component: HomescreenComponent},
   {path: 'gevondenbrillen', component: brillenLijstComponent, canActivate: [AuthGuard]},
   {path: 'briladvertentie', component: BrilAdvertentieComponent},

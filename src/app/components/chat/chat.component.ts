@@ -1,5 +1,5 @@
 import {AfterViewChecked, Component, ElementRef, OnDestroy, OnInit} from '@angular/core';
-import {AuthService, User} from "@auth0/auth0-angular";
+import {AuthService} from "@auth0/auth0-angular";
 import {FormControl} from "@angular/forms";
 import {Observable, of} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
@@ -7,6 +7,8 @@ import {HttpClient} from "@angular/common/http";
 import {Client, IFrame, Stomp} from "@stomp/stompjs";
 import {Message} from "../../dao/message";
 import * as SockJS from "sockjs-client";
+import {Customer} from "../../dao/customer";
+import {CustomerService} from "../../services/customer.service";
 
 @Component({
   selector: 'app-chat',
@@ -14,9 +16,9 @@ import * as SockJS from "sockjs-client";
   styleUrls: ['./chat.component.css']
 })
 export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked{
-  url = 'http://localhost:8080';
-  otherUser?: User;
-  thisUser: User;
+  url: string = "http://localhost:8083/brilkwijt";
+  otherUser = new Customer("");
+  thisUser= new Customer("");
   channelName?: string;
   socket?: WebSocket;
   stompClient?: Client;
@@ -27,16 +29,18 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked{
     private route: ActivatedRoute,
     private http:HttpClient,
     private el: ElementRef,
-    public auth: AuthService) {}
+    public auth: AuthService,
+    public customerService : CustomerService) {}
 
 
   ngOnInit(): void {
     this.auth.user$.subscribe(user => {
-      debugger;
-      this.thisUser = user!;
-      this.connectToChat();
-      this.el.nativeElement.querySelector("#chat").scrollIntoView();
-
+      this.thisUser.customerName = user?.email!;
+      this.customerService.otherCustomerName$.subscribe(name => {
+        this.otherUser.customerName = name;
+        this.connectToChat();
+        this.el.nativeElement.querySelector("#chat").scrollIntoView();
+      })
     });
 
   }
@@ -57,16 +61,16 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked{
   }
 
   connectToChat() {
-    const id1 = this.thisUser.email!;
-    const nick1 = this.thisUser.nickname;
-    const id2 = this.otherUser?.email!;
-    const nick2 = this.otherUser?.nickname!;
+    const id1 = this.thisUser.customerName!;
+    const nick1 = this.thisUser.customerName;
+    const id2 = this.otherUser?.customerName!;
+    const nick2 = this.otherUser?.customerName!;
 
-    if (id1 > id2) {
+    // if (id1 > id2) {
       this.channelName = nick1 + '&' + nick2;
-    } else {
-      this.channelName = nick2 + '&' + nick1;
-    }
+    // } else {
+    //   this.channelName = nick2 + '&' + nick1;
+    // }
     this.loadChat();
     console.log('connecting to chat...');
     this.socket = new SockJS(this.url + '/chat');
@@ -94,11 +98,12 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked{
 
   sendMsg() {
     if (this.newMessage.value !== '') {
+      debugger;
       // Use publish instead of send
       this.stompClient!.publish({
         destination: '/app/chat/' + this.channelName,
         body: JSON.stringify({
-          sender: this.thisUser.nickname,
+          sender: this.thisUser.customerName,
           t_stamp: 'to be defined in server',
           content: this.newMessage.value,
         }),
@@ -115,7 +120,7 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked{
       mgs.sort((a, b) => (a.ms_id > b.ms_id) ? 1 : -1)
       this.messages = of(mgs);
     })
-    console.log(this.messages);
+    this.messages.subscribe(res => console.log(res + "hallo"));
   }
 
   whenWasItPublished(myTimeStamp: string) {
@@ -126,5 +131,4 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked{
       myTimeStamp.substring(endDate + 1)
     );
   }
-
 }

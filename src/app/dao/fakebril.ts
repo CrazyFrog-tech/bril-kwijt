@@ -1,4 +1,5 @@
 import { Address } from "./address";
+import {Customer} from "./customer";
 
 
 export class FakeBril {
@@ -8,6 +9,7 @@ export class FakeBril {
     public address: Address,
     public color?: string,
     public brand?: string,
+    public customer?: Customer,
     public imageFilenames?: string[],
   ) { }
 }
