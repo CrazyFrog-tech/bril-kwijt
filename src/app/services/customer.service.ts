@@ -4,7 +4,7 @@ import {BehaviorSubject} from "rxjs";
 @Injectable({providedIn:'root'})
 export class CustomerService {
   private otherCustomer$ = new BehaviorSubject<string>('other user');
-  otherCustomerName$ = this.otherCustomer$.asObservable();
+  loggedInCustomerName$ = this.otherCustomer$.asObservable();
   constructor() {
 
   }

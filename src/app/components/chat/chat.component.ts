@@ -36,7 +36,8 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked{
   ngOnInit(): void {
     this.auth.user$.subscribe(user => {
       this.thisUser.customerName = user?.email!;
-      this.customerService.otherCustomerName$.subscribe(name => {
+      this.customerService.loggedInCustomerName$.subscribe(name => {
+        //todo here a debugger to se customerName
         this.otherUser.customerName = name;
         this.connectToChat();
         this.el.nativeElement.querySelector("#chat").scrollIntoView();
@@ -61,6 +62,9 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked{
   }
 
   connectToChat() {
+    debugger;
+
+    //todo here continue reading
     const id1 = this.thisUser.customerName!;
     const nick1 = this.thisUser.customerName;
     const id2 = this.otherUser?.customerName!;

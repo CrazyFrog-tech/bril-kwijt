@@ -1,8 +1,8 @@
 
-if the user is the poster of the ad, he can't reply to it at the moment. so in ad we need to check the current user vs the poster of the ad.
-when we go to advertisement we have to be able to validate user
-when chatting we can get the other user.
-https://github.com/andreavirgilio99/WebChat-springboot-angular
+there needs to come a button with all current chats of a user with other users
+a button when you click on you see current chats like in marktplaats
+button clicked -> get chats
+chat clicked -> view chat like current flow
 
 chatcontroller needs to be done
 

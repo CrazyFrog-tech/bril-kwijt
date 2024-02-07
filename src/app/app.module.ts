@@ -26,6 +26,8 @@ import { SubscriptionComponent } from './components/subscription/subscription.co
 import {AuthModule} from "@auth0/auth0-angular";
 import { ChatComponent } from './components/chat/chat.component';
 import {CustomerService} from "./services/customer.service";
+import { AppBarComponent } from './components/app-bar/app-bar.component';
+import { ChatsScreenComponent } from './components/chats-screen/chats-screen.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import {CustomerService} from "./services/customer.service";
     AddressFromComponentComponent,
     SubscriptionComponent,
     ChatComponent,
+    AppBarComponent,
+    ChatsScreenComponent,
   ],
   imports: [
     BrowserModule,

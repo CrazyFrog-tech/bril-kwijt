@@ -7,6 +7,7 @@ import {BrilAdvertentieComponent} from './components/bril-advertentie/bril-adver
 import {SubscriptionComponent} from './components/subscription/subscription.component';
 import {AuthGuard} from "@auth0/auth0-angular";
 import {ChatComponent} from "./components/chat/chat.component";
+import {ChatsScreenComponent} from "./components/chats-screen/chats-screen.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/homescreen', pathMatch: 'full'}, // Default redirection to 'home'
@@ -16,6 +17,8 @@ const routes: Routes = [
   {path: 'briladvertentie', component: BrilAdvertentieComponent},
   {path: 'subscriptions', component: SubscriptionComponent},
   {path: 'chat', component: ChatComponent},
+  {path: 'chatsscreen', component: ChatsScreenComponent},
+
 
 ];
 

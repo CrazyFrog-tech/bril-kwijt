@@ -1,0 +1,7 @@
+.app-bar {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  padding: 5px 5px; /* Adjust the padding as needed */
+}
+

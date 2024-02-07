@@ -35,6 +35,8 @@ export class BrilAdvertentieComponent implements OnInit {
       this.apiService.getBril(this.id).subscribe((data) => {
         this.bril = data;
         this.isUserOwner$ = this.checkUserIsOwner(this.bril);
+        //TODO here a debugger to see if username is being set correctly
+        debugger;
         this.customerService.setCustomerName(this.bril.customer?.customerName!);
         if (this.bril.imageFilenames) {
           for (let imagePath of this.bril.imageFilenames) {
