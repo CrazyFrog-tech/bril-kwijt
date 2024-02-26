@@ -9,6 +9,9 @@ import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
 import {Router} from "@angular/router";
 import {AuthService} from "@auth0/auth0-angular";
 import {CustomerService} from "../../services/customer.service";
+import {Store} from "@ngrx/store";
+import {AppState} from "../../store/reducers/counter.state";
+import {selectId} from "../../store/actions/counter.actions";
 
 @Component({
   selector: 'app-bril-advertentie',
@@ -24,10 +27,10 @@ export class BrilAdvertentieComponent implements OnInit, OnDestroy {
 
 
 
-  constructor(private brilIdService: BrilService, private router: Router,
+  constructor(private router: Router,
               private apiService: ApiService, private sanitizer: DomSanitizer,
               private authService : AuthService,
-              private customerService: CustomerService) {
+              private customerService: CustomerService, private store:Store) {
   }
 
   ngOnDestroy(): void {
@@ -35,9 +38,10 @@ export class BrilAdvertentieComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.subscriptions.add(this.brilIdService.selectedId$.subscribe((value) => {
-      this.id = value;
-      this.apiService.getBril(this.id).subscribe((data) => {
+    this.subscriptions.add(this.store.select((state:AppState) => state).subscribe((value) => {
+      this.id = value.id['id'] as string;
+      console.log(this.id)
+      this.apiService.getBril(this.id.toString()).subscribe((data) => {
         this.bril = data;
         this.isUserOwner$ = this.checkUserIsOwner(this.bril);
         this.customerService.setCustomerName(this.bril.customer?.customerName!);

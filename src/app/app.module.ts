@@ -30,6 +30,7 @@ import { AppBarComponent } from './components/app-bar/app-bar.component';
 import { ChatsScreenComponent } from './components/chats-screen/chats-screen.component';
 import {StoreModule} from "@ngrx/store";
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import {counterReducer} from "./store/reducers/counter.redcuer";
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     MatToolbarModule,
     MaterialModule,
     HttpClientModule,
+    StoreModule.forRoot({id: counterReducer}),
     AuthModule.forRoot({
       domain: 'dev-8k5u5q2o5koo17tb.us.auth0.com',
       clientId: 'uCIlaYCCY6iptKAw0dvpUc5Ce6g8rlEO',
