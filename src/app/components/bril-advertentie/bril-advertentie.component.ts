@@ -1,10 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {BrilService} from '../../services/bril.service';
 import {FakeBril} from 'src/app/dao/fakebril';
 import {ApiService} from 'src/app/services/api.service';
 import {HttpParams} from '@angular/common/http';
 
-import {map, Observable, of} from 'rxjs';
+import {map, Observable, of, Subscription} from 'rxjs';
 import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
 import {Router} from "@angular/router";
 import {AuthService} from "@auth0/auth0-angular";
@@ -15,11 +15,12 @@ import {CustomerService} from "../../services/customer.service";
   templateUrl: './bril-advertentie.component.html',
   styleUrls: ['./bril-advertentie.component.css'],
 })
-export class BrilAdvertentieComponent implements OnInit {
+export class BrilAdvertentieComponent implements OnInit, OnDestroy {
   id: string = '';
   bril!: FakeBril;
   images: SafeUrl[] = [];
   isUserOwner$: Observable<boolean>;
+  subscriptions = new Subscription();
 
 
 
@@ -29,14 +30,16 @@ export class BrilAdvertentieComponent implements OnInit {
               private customerService: CustomerService) {
   }
 
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
+  }
+
   ngOnInit(): void {
-    this.brilIdService.selectedId$.subscribe((value) => {
+    this.subscriptions.add(this.brilIdService.selectedId$.subscribe((value) => {
       this.id = value;
       this.apiService.getBril(this.id).subscribe((data) => {
         this.bril = data;
         this.isUserOwner$ = this.checkUserIsOwner(this.bril);
-        //TODO here a debugger to see if username is being set correctly
-        debugger;
         this.customerService.setCustomerName(this.bril.customer?.customerName!);
         if (this.bril.imageFilenames) {
           for (let imagePath of this.bril.imageFilenames) {
@@ -53,8 +56,10 @@ export class BrilAdvertentieComponent implements OnInit {
           }
         }
       })
-    });
+    }));
   }
+
+
 
   checkUserIsOwner(bril: FakeBril): Observable<boolean> {
     return this.authService.user$.pipe(

@@ -1,14 +1,8 @@
 
-there needs to come a button with all current chats of a user with other users
-a button when you click on you see current chats like in marktplaats
-button clicked -> get chats
-chat clicked -> view chat like current flow
+first step is just to get chats and show them as is
 
-chatcontroller needs to be done
 
-continue working on chat frontend
-continue watching the video and implementing the code
-you need    to see what we want to do with the user because we need the user and his user name
+before deploying the website I would like it to have chat system implemented
 
 https://github.com/stylepatrick/websocket-chat-spring-boot-angular
 

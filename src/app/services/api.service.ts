@@ -29,4 +29,9 @@ getImages(httpParams: HttpParams): Observable<Blob> {
     return this.http.post<FormData>(this.baseURL + 'description', fakebril);
   }
 
+  getAllChats(): Observable<any> {
+    return this.http.get(this.baseURL + 'getChats');
+
+  }
+
 }

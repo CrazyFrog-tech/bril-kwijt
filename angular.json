@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "bril-kwijt:build:production"
+              "buildTarget": "bril-kwijt:build:production"
             },
             "development": {
-              "browserTarget": "bril-kwijt:build:development"
+              "buildTarget": "bril-kwijt:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +71,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "bril-kwijt:build"
+            "buildTarget": "bril-kwijt:build"
           }
         },
         "test": {
