@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -28,6 +28,8 @@ import { ChatComponent } from './components/chat/chat.component';
 import {CustomerService} from "./services/customer.service";
 import { AppBarComponent } from './components/app-bar/app-bar.component';
 import { ChatsScreenComponent } from './components/chats-screen/chats-screen.component';
+import {StoreModule} from "@ngrx/store";
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
@@ -63,7 +65,9 @@ import { ChatsScreenComponent } from './components/chats-screen/chats-screen.com
       authorizationParams: {
         redirect_uri: 'http://localhost:4200/homescreen'
       }
-    })
+    }),
+
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
   ],
   providers: [BrilService],
   bootstrap: [AppComponent],
