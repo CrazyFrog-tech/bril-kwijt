@@ -9,8 +9,8 @@ import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
 import {Router} from "@angular/router";
 import {AuthService} from "@auth0/auth0-angular";
 import {CustomerService} from "../../services/customer.service";
-import {Store} from "@ngrx/store";
-import {AppState} from "../../store/reducers/counter.state";
+import {select, Store} from "@ngrx/store";
+import {AppState, BrilState} from "../../store/reducers/counter.state";
 import {selectId} from "../../store/actions/counter.actions";
 
 @Component({
@@ -30,7 +30,7 @@ export class BrilAdvertentieComponent implements OnInit, OnDestroy {
   constructor(private router: Router,
               private apiService: ApiService, private sanitizer: DomSanitizer,
               private authService : AuthService,
-              private customerService: CustomerService, private store:Store) {
+              private customerService: CustomerService, private store:Store<AppState>) {
   }
 
   ngOnDestroy(): void {
@@ -38,10 +38,11 @@ export class BrilAdvertentieComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.subscriptions.add(this.store.select((state:AppState) => state).subscribe((value) => {
-      this.id = value.id['id'] as string;
+    this.subscriptions.add(this.store.pipe(select((state:any) => state.brilState.brilState)).subscribe((value) => {
+      console.log(value);
+      this.id = value.id;
       console.log(this.id)
-      this.apiService.getBril(this.id.toString()).subscribe((data) => {
+      this.apiService.getBril(this.id).subscribe((data) => {
         this.bril = data;
         this.isUserOwner$ = this.checkUserIsOwner(this.bril);
         this.customerService.setCustomerName(this.bril.customer?.customerName!);

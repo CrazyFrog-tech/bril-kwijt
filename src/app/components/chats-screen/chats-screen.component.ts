@@ -1,5 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiService} from "../../services/api.service";
+import {AppState} from "../../store/reducers/counter.state";
+import {Store} from "@ngrx/store";
+import {selectChat, selectId} from "../../store/actions/counter.actions";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-chats-screen',
@@ -9,7 +13,7 @@ import {ApiService} from "../../services/api.service";
 export class ChatsScreenComponent implements OnInit{
   chats: any[];
 
-  constructor(private apiService:ApiService) {
+  constructor(private router: Router, private apiService:ApiService, private store:Store<AppState>) {
   }
 
   ngOnInit(): void {
@@ -23,4 +27,11 @@ export class ChatsScreenComponent implements OnInit{
     })
   }
 
+  goToTheChat(chat: any) {
+    console.log(chat.name);
+    this.store.dispatch(selectChat({chatMessageName: chat.name}));
+    this.router.navigate(['/chat']);
+
+
+  }
 }

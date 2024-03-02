@@ -60,7 +60,7 @@ import {counterReducer} from "./store/reducers/counter.redcuer";
     MatToolbarModule,
     MaterialModule,
     HttpClientModule,
-    StoreModule.forRoot({id: counterReducer}),
+    StoreModule.forRoot({brilState: counterReducer}),
     AuthModule.forRoot({
       domain: 'dev-8k5u5q2o5koo17tb.us.auth0.com',
       clientId: 'uCIlaYCCY6iptKAw0dvpUc5Ce6g8rlEO',

@@ -9,6 +9,8 @@ import {Message} from "../../dao/message";
 import * as SockJS from "sockjs-client";
 import {Customer} from "../../dao/customer";
 import {CustomerService} from "../../services/customer.service";
+import {Store} from "@ngrx/store";
+import {AppState} from "../../store/reducers/counter.state";
 
 @Component({
   selector: 'app-chat',
@@ -30,7 +32,8 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked{
     private http:HttpClient,
     private el: ElementRef,
     public auth: AuthService,
-    public customerService : CustomerService) {}
+    public customerService : CustomerService,
+    private store:Store) {}
 
 
   ngOnInit(): void {
@@ -61,14 +64,26 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked{
   }
 
   connectToChat() {
-    debugger;
-    const id1 = this.thisUser.customerName!;
+    // const id1 = this.thisUser.customerName!;
     const nick1 = this.thisUser.customerName;
-    const id2 = this.otherUser?.customerName!;
+    // const id2 = this.otherUser?.customerName!;
     const nick2 = this.otherUser?.customerName!;
 
     // if (id1 > id2) {
+    if(nick1 && nick2){
       this.channelName = nick1 + '&' + nick2;
+    }else{
+      this.store.select((state:any) => state.brilState.brilState.chatMessageName).subscribe(
+        (chatMessageName) => {
+          if(chatMessageName){
+            this.channelName=chatMessageName;
+
+          }
+        }
+      )
+
+    }
+
     // } else {
     //   this.channelName = nick2 + '&' + nick1;
     // }
@@ -99,7 +114,6 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked{
 
   sendMsg() {
     if (this.newMessage.value !== '') {
-      debugger;
       // Use publish instead of send
       this.stompClient!.publish({
         destination: '/app/chat/' + this.channelName,

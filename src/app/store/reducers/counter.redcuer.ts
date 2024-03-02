@@ -1,12 +1,23 @@
 import {createReducer, on} from '@ngrx/store';
-import {  selectId,decrement, reset } from '../actions/counter.actions';
+import {reset, selectChat, selectId} from '../actions/counter.actions';
 import {initialState} from "./counter.state";
 
 export const counterReducer = createReducer(
   initialState,
   on(selectId, (state, {id}) => {
-    return { ...state, id};
+    return {
+      brilState: {
+        ...state.brilState, id
+      }
+    };
   })
-,
+  ,
+  on(selectChat, (state, {chatMessageName}) => {
+    return {
+      brilState: {
+        ...state.brilState, chatMessageName
+      }
+    };
+  }),
   on(reset, state => initialState)
 );

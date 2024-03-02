@@ -1,3 +1,3 @@
 <mat-nav-list class="container"  *ngFor="let chat of chats" role="list">
-  <mat-list-item>{{chat.name}}</mat-list-item>
+  <mat-list-item (click)="goToTheChat(chat)">{{chat.name}}</mat-list-item>
 </mat-nav-list>
