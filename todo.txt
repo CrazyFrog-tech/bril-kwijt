@@ -4,6 +4,10 @@ first step is just to get chats and show them as is
 
 before deploying the website I would like it to have chat system implemented
 
+
+
+add a proxy config to the app
+
 https://github.com/stylepatrick/websocket-chat-spring-boot-angular
 
 

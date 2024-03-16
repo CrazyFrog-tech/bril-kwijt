@@ -58,12 +58,16 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "proxyConfig": "proxy.conf.json"
+          },
           "configurations": {
             "production": {
               "buildTarget": "bril-kwijt:build:production"
             },
             "development": {
-              "buildTarget": "bril-kwijt:build:development"
+              "buildTarget": "bril-kwijt:build:development",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
