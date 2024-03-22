@@ -28,9 +28,10 @@ export class ChatsScreenComponent implements OnInit{
     })
   }
 
-  goToTheChat(chat: any) {
-    console.log(chat.name);
-    this.store.dispatch(selectChat({chatMessageName: chat.name}));
+  goToTheChat(chat: string) {
+    debugger
+    console.log(chat);
+    this.store.dispatch(selectChat({chatMessageName: chat}));
     this.router.navigate(['/chat']);
 
 

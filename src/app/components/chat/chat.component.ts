@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
 import { Store } from '@ngrx/store';
 import { Client, Stomp } from '@stomp/stompjs';
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subscription } from 'rxjs';
 import * as SockJS from 'sockjs-client';
 import { Customer } from '../../dao/customer';
 import { Message } from '../../dao/message';
@@ -26,6 +26,7 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
     newMessage = new FormControl('');
     messages?: Observable<Array<Message>>;
     currentMessages: Observable<Array<Message>>;
+    subscriptions = new Subscription();
 
     constructor(
         private route: ActivatedRoute,
@@ -53,6 +54,7 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
         if (this.stompClient) {
             this.stompClient.deactivate();
         }
+        this.subscriptions.unsubscribe();
     }
 
     ngAfterViewChecked(): void {
@@ -87,14 +89,14 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
             // what to do when connection is established
             console.log('connected to: ' + frame);
             if (this.stompClient) {
-                this.stompClient.subscribe(
+                this.subscriptions.add(this.stompClient.subscribe(
                     '/topic/messages/' + this.channelName,
                     (response) => {
                         console.log(response, 'in topic messages');
                         //what to do when client receives data (messages)
                         this.loadChat();
                     }
-                );
+                ));
             }
         };
         // Handle errors
@@ -125,12 +127,11 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
 
     loadChat() {
         this.messages = this.http.post<Array<Message>>(this.url + '/getMessages', this.channelName);
-        this.messages.subscribe(data => {
-            debugger;
+        this.subscriptions.add(this.messages.subscribe(data => {
             let mgs: Array<Message> = data;
             mgs.sort((a, b) => (a.ms_id > b.ms_id) ? 1 : -1);
             this.currentMessages = of(mgs);
-        });
+        }));
     }
 
     whenWasItPublished(myTimeStamp: string) {

@@ -7,7 +7,8 @@ export const counterReducer = createReducer(
   on(selectId, (state, {id}) => {
     return {
       brilState: {
-        ...state.brilState, id
+        ...state.brilState,
+        id: id
       }
     };
   })
@@ -15,7 +16,8 @@ export const counterReducer = createReducer(
   on(selectChat, (state, {chatMessageName}) => {
     return {
       brilState: {
-        ...state.brilState, chatMessageName
+        ...state.brilState,
+        chatMessageName: chatMessageName
       }
     };
   }),
