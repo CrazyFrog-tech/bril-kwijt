@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { AfterViewChecked, Component, ElementRef, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewChecked, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
@@ -17,6 +17,8 @@ import { CustomerService } from '../../services/customer.service';
     styleUrls: ['./chat.component.css']
 })
 export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
+    @ViewChild('chat') chat: ElementRef;
+
     url: string = '/brilkwijt';
     otherUser = new Customer('');
     thisUser = new Customer('');
@@ -29,12 +31,12 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
     subscriptions = new Subscription();
 
     constructor(
-        private route: ActivatedRoute,
         private http: HttpClient,
         private el: ElementRef,
         public auth: AuthService,
         public customerService: CustomerService,
         private store: Store) {
+
     }
 
     ngOnInit(): void {
@@ -62,8 +64,7 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
     }
 
     scrollDown() {
-        var container = this.el.nativeElement.querySelector('#chat');
-        container.scrollTop = container.scrollHeight;
+        this.chat.nativeElement.scrollTop = this.chat.nativeElement.scrollHeight;
     }
 
     connectToChat() {
@@ -119,9 +120,8 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
             });
 
             this.newMessage.setValue('');
-        }
-        else{
-            console.log('no stomp client')
+        } else {
+            console.log('no stomp client');
         }
     }
 
@@ -129,7 +129,7 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
         this.messages = this.http.post<Array<Message>>(this.url + '/getMessages', this.channelName);
         this.subscriptions.add(this.messages.subscribe(data => {
             let mgs: Array<Message> = data;
-            mgs.sort((a, b) => (a.ms_id > b.ms_id) ? 1 : -1);
+            mgs.sort((a, b) => (a.ms_id > b.ms_id) ? -1 : 1);
             this.currentMessages = of(mgs);
         }));
     }
@@ -142,4 +142,5 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
             myTimeStamp.substring(endDate + 1)
         );
     }
+
 }
