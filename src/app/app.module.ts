@@ -1,3 +1,4 @@
+import { GoogleMapsModule } from '@angular/google-maps';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -59,6 +60,7 @@ import {counterReducer} from "./store/reducers/counter.redcuer";
     MatGridListModule,
     MatToolbarModule,
     MaterialModule,
+    GoogleMapsModule,
     HttpClientModule,
     StoreModule.forRoot({brilState: counterReducer}),
     AuthModule.forRoot({

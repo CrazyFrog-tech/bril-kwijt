@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Address } from 'src/app/dao/address';
 
@@ -7,7 +7,9 @@ import { Address } from 'src/app/dao/address';
   templateUrl: './address-from-component.component.html',
   styleUrls: ['./address-from-component.component.css'],
 })
-export class AddressFromComponentComponent {
+export class AddressFromComponentComponent implements AfterViewInit{
+  @ViewChild('addressInput') addressInput: ElementRef;
+
   @Output() addressEmitted: EventEmitter<Address> = new EventEmitter<Address>();
 
   addressForm = this.fb.group({
@@ -32,49 +34,57 @@ export class AddressFromComponentComponent {
     }
   }
 
-  fillInAddressForm(place: any) {
-    // const addressComponents = place.address_components || [];
-    //
-    // const street = addressComponents.find((component) =>
-    //   component.types.includes('route')
-    // );
-    // const city = addressComponents.find((component) =>
-    //   component.types.includes('locality')
-    // );
-    // const postalcode = addressComponents.find((component) =>
-    //   component.types.includes('postal_code')
-    // );
-    // const housenr = addressComponents.find((component) =>
-    //   component.types.includes('street_number')
-    // );
-    //
-    // this.addressForm.controls.street.setValue(street ? street.long_name : '');
-    // this.addressForm.controls.city.setValue(city ? city.long_name : '');
-    // this.addressForm.controls.postalCode.setValue(
-    //   postalcode ? postalcode.long_name : ''
-    // );
-    // this.addressForm.controls.houseNr.setValue(
-    //   housenr ? housenr.long_name : ''
-    // );
+  ngAfterViewInit(): void {
+    const autocomplete = new google.maps.places.Autocomplete(this.addressInput.nativeElement);
+    autocomplete.addListener('place_changed', () => {
+      const place = autocomplete.getPlace();
+      this.fillInAddressForm(place);
+    });
+    }
+
+  fillInAddressForm(place: google.maps.places.PlaceResult) {
+    const addressComponents = place.address_components || [];
+
+    const street = addressComponents.find((component) =>
+      component.types.includes('route')
+    );
+    const city = addressComponents.find((component) =>
+      component.types.includes('locality')
+    );
+    const postalcode = addressComponents.find((component) =>
+      component.types.includes('postal_code')
+    );
+    const housenr = addressComponents.find((component) =>
+      component.types.includes('street_number')
+    );
+
+    this.addressForm.controls.street.setValue(street ? street.long_name : '');
+    this.addressForm.controls.city.setValue(city ? city.long_name : '');
+    this.addressForm.controls.postalCode.setValue(
+      postalcode ? postalcode.long_name : ''
+    );
+    this.addressForm.controls.houseNr.setValue(
+      housenr ? housenr.long_name : ''
+    );
   }
   private makeAddresMap() {
-    // let streetValue = this.extractFormControlValue(
-    //   this.addressForm.controls.street
-    // );
-    // let cityValue = this.extractFormControlValue(
-    //   this.addressForm.controls.city
-    // );
-    // let postalCodeValue = this.extractFormControlValue(
-    //   this.addressForm.controls.postalCode
-    // );
-    // let houseNrValue = this.extractFormControlValue(
-    //   this.addressForm.controls.houseNr
-    // );
+    let streetValue = this.extractFormControlValue(
+      this.addressForm.controls.street
+    );
+    let cityValue = this.extractFormControlValue(
+      this.addressForm.controls.city
+    );
+    let postalCodeValue = this.extractFormControlValue(
+      this.addressForm.controls.postalCode
+    );
+    let houseNrValue = this.extractFormControlValue(
+      this.addressForm.controls.houseNr
+    );
     let addressData = new Address(
-      "streetValue",
-      "houseNrValue",
-      "postalCodeValue",
-      "cityValue"
+      streetValue,
+      houseNrValue,
+      postalCodeValue,
+      cityValue
     );
     return addressData;
   }
