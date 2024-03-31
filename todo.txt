@@ -11,3 +11,4 @@ add a proxy config to the app
 https://github.com/stylepatrick/websocket-chat-spring-boot-angular
 
 
+local storage implementation so the app doesn't get confused no more
