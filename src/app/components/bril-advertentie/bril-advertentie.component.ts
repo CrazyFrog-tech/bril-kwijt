@@ -1,10 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {BrilService} from '../../services/bril.service';
-import {FakeBril} from 'src/app/dao/fakebril';
+import {Bril} from 'src/app/dao/bril';
 import {ApiService} from 'src/app/services/api.service';
 import {HttpParams} from '@angular/common/http';
 
-import {map, Observable, of, Subscription} from 'rxjs';
+import { map, Observable, of, Subscription, switchMap } from 'rxjs';
 import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
 import {Router} from "@angular/router";
 import {AuthService} from "@auth0/auth0-angular";
@@ -20,7 +20,7 @@ import {selectId} from "../../store/actions/counter.actions";
 })
 export class BrilAdvertentieComponent implements OnInit, OnDestroy {
   id: string = '';
-  bril!: FakeBril;
+  bril!: Bril;
   images: SafeUrl[] = [];
   isUserOwner$: Observable<boolean>;
   subscriptions = new Subscription();
@@ -38,35 +38,52 @@ export class BrilAdvertentieComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.subscriptions.add(this.store.pipe(select((state:any) => state.brilState.brilState)).subscribe((value) => {
-      console.log(value);
-      this.id = value.id;
-      console.log(this.id)
-      this.apiService.getBril(this.id).subscribe((data) => {
-        this.bril = data;
-        this.isUserOwner$ = this.checkUserIsOwner(this.bril);
-        this.customerService.setCustomerName(this.bril.customer?.customerName!);
-        if (this.bril.imageFilenames) {
-          for (let imagePath of this.bril.imageFilenames) {
-            this.apiService.getImages(new HttpParams().append('imageName', imagePath)).pipe(
-              map((imageBlob) => {
-                const blob = new Blob([imageBlob], {type: 'application/image'});
-                const unsafeImg = URL.createObjectURL(blob);
-                const image: SafeUrl = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
-                return image;
-              })
-            ).subscribe((safeImage) => {
+    this.retrieveSelectedIdFromLocalStorage();
+    this.subscribeToBrilState();
+  }
+
+  private retrieveSelectedIdFromLocalStorage(): void {
+    const savedId = sessionStorage.getItem('selectedId');
+    if (savedId) {
+      this.store.dispatch(selectId({ id: savedId }));
+    }
+  }
+
+  private subscribeToBrilState(): void {
+    this.subscriptions.add(
+        this.store.pipe(
+            select((state: any) => state.brilState.brilState),
+            switchMap((value) => this.apiService.getBril(value.id))
+        ).subscribe((bril) => {
+          this.bril = bril;
+          this.isUserOwner$ = this.checkUserIsOwner(bril);
+          this.customerService.setCustomerName(bril.customer?.customerName!);
+          this.loadBrilImages(bril.imageFilenames);
+        })
+    );
+  }
+
+  private loadBrilImages(imageFilenames: string[]): void {
+    if (imageFilenames) {
+      for (let imagePath of imageFilenames) {
+        this.apiService.getImages(new HttpParams().append('imageName', imagePath))
+            .pipe(
+                map((imageBlob) => {
+                  const blob = new Blob([imageBlob], { type: 'application/image' });
+                  const unsafeImg = URL.createObjectURL(blob);
+                  return this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
+                })
+            )
+            .subscribe((safeImage) => {
               this.images.push(safeImage);
             });
-          }
-        }
-      })
-    }));
+      }
+    }
   }
 
 
 
-  checkUserIsOwner(bril: FakeBril): Observable<boolean> {
+  checkUserIsOwner(bril: Bril): Observable<boolean> {
     return this.authService.user$.pipe(
       map(user => user?.name === bril.customer?.customerName)
     );

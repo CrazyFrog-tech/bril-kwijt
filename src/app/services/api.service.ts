@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { FakeBril } from '../dao/fakebril';
+import { Bril } from '../dao/bril';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -16,11 +16,11 @@ getImages(httpParams: HttpParams): Observable<Blob> {
   }
 
   getAllBrillen(): Observable<any[]> {
-    return this.http.get<FakeBril[]>(this.baseURL + 'brillen')
+    return this.http.get<Bril[]>(this.baseURL + 'brillen')
   }
 
-  getBril(id : string): Observable<FakeBril> {
-    return this.http.get<FakeBril>(this.baseURL + 'bril/' + id)
+  getBril(id : string): Observable<Bril> {
+    return this.http.get<Bril>(this.baseURL + 'bril/' + id)
   }
 
   addFakeBril(fakebril:FormData): Observable<any> {

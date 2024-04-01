@@ -2,7 +2,7 @@ import { Address } from "./address";
 import {Customer} from "./customer";
 
 
-export class FakeBril {
+export class Bril {
   constructor(public titel: string,
     public description: string,
     public lostAtDate: string,

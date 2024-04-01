@@ -74,12 +74,14 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
         // if (id1 > id2) {
         if (firstUserName && secondUserName) {
             this.channelName = firstUserName + '&' + secondUserName;
+            sessionStorage.setItem('chatName', this.channelName);
         } else {
             this.store.select((state: any) => state.brilState.brilState.chatMessageName).subscribe(
                 (chatMessageName) => {
                     if (chatMessageName) {
                         this.channelName = chatMessageName;
-
+                    }else{
+                        this.channelName = sessionStorage.getItem('chatName');
                     }
                 }
             );

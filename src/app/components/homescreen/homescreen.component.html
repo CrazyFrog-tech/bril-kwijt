@@ -3,26 +3,39 @@
     <mat-grid-tile>
       <mat-card class="card-content">
         <mat-card-content>
-          <button mat-fab extended (click)="goToBrilGevonden()">
-            <mat-icon>arrow_right_alt</mat-icon>
-            Bril gevonden?
-          </button>
-          <div class="divider"></div>
-          <button mat-fab extended class="button" (click)="goToGevondenBrillen()">
-            <mat-icon>arrow_right_alt</mat-icon>
-            Bril kwijt?
-          </button>
-          <button *ngIf="!(auth.isAuthenticated$ | async)" (click)="login()">Log in</button>
-          <button *ngIf="(auth.isAuthenticated$ | async ) && !(auth.isLoading$ | async)" (click)="logout()">
-            Log out
-          </button>
-          <ul *ngIf="auth.user$ | async as user">
-            <li>{{ user.name }}</li>
-            <li>{{ user.email }}</li>
-          </ul>`
-        </mat-card-content>
+            <div class="rows-container">
+                <div class="buttons-container">
+                    <button mat-fab extended (click)="goToBrilGevonden()">
+                        <mat-icon>arrow_right_alt</mat-icon>
+                        Bril gevonden?
+                    </button>
+                    <div class="divider"></div>
+                    <button mat-fab extended class="button" (click)="goToGevondenBrillen()">
+                        <mat-icon>arrow_right_alt</mat-icon>
+                        Bril kwijt?
+                    </button>
+                </div>
+                <div class="login-container">
+                    <button mat-fab extended *ngIf="!(auth.isAuthenticated$ | async)" (click)="login()">
+                        <mat-icon>arrow_right_alt</mat-icon>
+                        Log in/register</button>
+                    <button mat-fab extended *ngIf="(auth.isAuthenticated$ | async ) && !(auth.isLoading$ | async)" (click)="logout()">
+                        <mat-icon>arrow_right_alt</mat-icon>
+                        Log out
+                    </button>
+                </div>
 
+            </div>
+
+
+
+
+        </mat-card-content>
+          <mat-divider ></mat-divider>
       </mat-card>
+
     </mat-grid-tile>
+
+
   </mat-grid-list>
 </div>

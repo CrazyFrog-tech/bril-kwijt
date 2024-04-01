@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Router} from "@angular/router";
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-app-bar',
@@ -7,12 +8,18 @@ import {Router} from "@angular/router";
   styleUrls: ['./app-bar.component.css']
 })
 export class AppBarComponent {
-  @Input() isLoggedIn: boolean = false;
+  @Input() isLoggedIn: Observable<boolean>;
 
   constructor(private router: Router) {}
   goToChatsScreen() {
     this.router.navigate(['/chatsscreen']);
   }
+
+  goToProfileScreen() {
+    this.router.navigate(['/profilescreen']);
+  }
+
+
 
 
 

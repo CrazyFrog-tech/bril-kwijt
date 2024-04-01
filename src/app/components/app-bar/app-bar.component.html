@@ -1,9 +1,9 @@
 <mat-toolbar color="primary" class="app-bar">
-  <button mat-icon-button *ngIf="isLoggedIn">
+  <button mat-icon-button *ngIf="isLoggedIn | async" (click)="goToProfileScreen()">
     <!-- Add your profile avatar here -->
     <mat-icon>account_circle</mat-icon>
   </button>
-  <button mat-icon-button *ngIf="isLoggedIn" (click)="goToChatsScreen()">
+  <button mat-icon-button *ngIf="isLoggedIn | async" (click)="goToChatsScreen()">
     <mat-icon>message</mat-icon>
   </button>
 </mat-toolbar>

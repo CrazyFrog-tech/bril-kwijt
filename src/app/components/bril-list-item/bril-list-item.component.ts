@@ -18,6 +18,9 @@ export class BrilListItemComponent implements OnInit{
 
   onListItemClicked() {
     this.store.dispatch(selectId({id: this.brilListItem.id}));
+    sessionStorage.setItem('selectedId', this.brilListItem.id);
+
+
     this.router.navigate(['/briladvertentie']);
   }
 }

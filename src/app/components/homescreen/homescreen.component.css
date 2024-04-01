@@ -25,6 +25,12 @@ mat-grid-list {
   background-color: #1899d6;
 }
 
+.login-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
 
 .backgound {
 

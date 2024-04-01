@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Address } from '../../dao/address';
-import { FakeBril } from '../../dao/fakebril';
+import { Bril } from '../../dao/bril';
 import { ApiService } from '../../services/api.service';
 import {AuthService} from "@auth0/auth0-angular";
 import {Customer} from "../../dao/customer";
@@ -43,13 +43,13 @@ export class BrilgevondenComponent implements OnInit{
     this.selectedFiles = event.target.files;
   }
 
-  initBril() : FakeBril{
+  initBril() : Bril{
     let titel = this.brilDetails.controls['titel'].value as string;
     let description = this.brilDetails.controls['description'].value as string;
     let dateLostAt =this.exposeDate(this.brilDetails.controls['lostAt'].value as Date);
     let color = this.brilDetails.controls['color'].value as string;
     let brand = this.brilDetails.controls['brand'].value as string;
-    return new FakeBril(
+    return new Bril(
       titel,
       description,
       dateLostAt,
@@ -61,18 +61,16 @@ export class BrilgevondenComponent implements OnInit{
 
 }
 
-  goHome() {
+  uploadAndGoHome() {
     this.displayProgressSpinner = true;
-    //todo getting specifik data from the address.
     let formData = new FormData();
-
     if (this.selectedFiles && this.selectedFiles.length) {
       for (let i = 0; i < this.selectedFiles.length; i++) {
         formData.append('images', this.selectedFiles[i]);
       }
     }
-    let fakeBril = this.initBril();
-    formData.append('bril', JSON.stringify(fakeBril));
+    let bril = this.initBril();
+    formData.append('bril', JSON.stringify(bril));
     this.apiService.addFakeBril(formData).subscribe({
       next: (value) => {
         this.displayProgressSpinner = true;
@@ -87,7 +85,6 @@ export class BrilgevondenComponent implements OnInit{
         this.router.navigate(['/homescreen']);
       },
     });
-    this.displayProgressSpinner = false;
   }
 
   uploadDescription() {}
