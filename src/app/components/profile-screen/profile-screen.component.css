@@ -1,0 +1,25 @@
+.profile-container {
+    max-width: 30vw;
+    margin: 4px auto;
+    padding: 20px;
+    border: 5px solid #ffffff;
+    border-radius: 5px;
+}
+
+.profile-container h2 {
+    margin-bottom: 10px;
+}
+
+.profile-container ul {
+    list-style: none;
+    padding: 0;
+}
+
+.profile-container li {
+    margin-bottom: 5px;
+}
+
+.profile-container button {
+    background-color: #7a8ef6;
+    margin: 5px;
+}
