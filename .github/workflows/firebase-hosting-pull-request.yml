@@ -18,4 +18,5 @@ jobs:
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_BRIL_KWIJT }}
-          projectId: bril-kwijt
+          projectId: bril-kwijt-9e659
+
