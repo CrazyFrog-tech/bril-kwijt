@@ -20,13 +20,8 @@ I need to deploy the image to google and deploy the frontend to google and then 
 
 
 deployment
-https://www.youtube.com/watch?v=y_idn12FB18&ab_channel=ProgrammingTechie
-https://youtu.be/TEAVFh94sdM?si=xppkM_xqIDAd3YDL
-https://pavankjadda.dev/how-to-deploy-angular-and-spring-boot-apps-behind-nginx-proxy-server/
-https://www.youtube.com/watch?v=vrjoSsiKZaA&ab_channel=TechnoTownTechie
-https://www.youtube.com/watch?v=ERVAFkj66QQ&ab_channel=CodeDeck
-https://www.youtube.com/watch?v=BKepFaIwCvo&ab_channel=OktaDev
 
+your okta signin is allanmohamad7@gmail.com
 
 
 https://chatgpt.com/c/90c17df8-1a77-48ac-b3e9-70b081a61c73

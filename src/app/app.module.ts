@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthModule } from '@auth0/auth0-angular';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -68,7 +69,7 @@ import { counterReducer } from './store/reducers/counter.redcuer';
             domain: 'dev-8k5u5q2o5koo17tb.us.auth0.com',
             clientId: 'uCIlaYCCY6iptKAw0dvpUc5Ce6g8rlEO',
             authorizationParams: {
-                redirect_uri: 'http://localhost:4200/homescreen'
+                redirect_uri: environment.redirect_uri,
             }
         }),
 
