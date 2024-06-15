@@ -1,0 +1,14 @@
+<mat-list-item class="hover-effect" (click)="onListItemClicked()">
+
+  <img matListItemAvatar
+    [src]="brilListItem.imageContent"
+    alt="Image"
+  >
+  <h3 matListItemTitle>{{ brilListItem.titel + ", in " + brilListItem.address.city }}</h3>
+  <p matListItemLine>
+    {{' Street ' + brilListItem.address.street}}
+    {{', Date Lost ' + brilListItem.lostAtDate}}
+    {{', brand ' + brilListItem.brand}}
+
+      </p>
+</mat-list-item>

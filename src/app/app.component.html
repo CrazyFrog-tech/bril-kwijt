@@ -1,1 +1,6 @@
-<button mat-button>sucka</button>
+<div class="background">
+    <app-loading-spinner *ngIf="isLoading |async"></app-loading-spinner>
+    <app-app-bar *ngIf="!(isLoading | async)" [isLoggedIn]="isLoggedIn"></app-app-bar>
+    <router-outlet *ngIf="!(isLoading | async)"></router-outlet>
+
+</div>

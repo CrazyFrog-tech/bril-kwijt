@@ -1,0 +1,69 @@
+.slider {
+  width: 800px;
+  height: 400px;
+  overflow: hidden;
+  position: relative;
+  background: #e6e6e6;
+  border: 20px solid #fff;
+  margin-top: 20px;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+
+}
+
+.arrow {
+  position: absolute;
+  z-index: 1002;
+  display: block;
+  top: 50%;
+  margin-top: -35px;
+  width: 36px;
+  height: 71px;
+  outline: none !important;
+  background: url(/assets/carousel/blank.gif);
+  cursor: pointer;
+  border: none;
+}
+
+.arrow.prev {
+  left: 20px;
+  background-image: url(/assets/carousel/paddle_prev_fff.png);
+  background-color: rgba(255,255,255,0.50);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: 0.2s linear all;
+}
+
+.arrow.next {
+  right: 20px;
+  background-image: url(/assets/carousel/paddle_next_fff.png);
+  background-color: rgba(255,255,255,0.50);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: 0.2s linear all;
+}
+
+.arrow.prev:hover {
+  opacity: 1;
+  background-color: rgba(24, 152, 212, 0.75);
+
+}
+
+.arrow.next:hover {
+  opacity: 1;
+  background-color: rgba(24, 152, 212, 0.75);
+}
+
+@media (max-width: 768px) {
+  .slider {
+    width: 90vw; /* Make the container full width */
+    height: 40vh; /* Let the height adjust to content */
+  }
+}

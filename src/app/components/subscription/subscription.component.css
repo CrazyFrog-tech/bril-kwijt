@@ -1,0 +1,97 @@
+.subscription-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 5%;
+}
+
+.subscription-card {
+  width: 25%;
+  max-width: 300px;
+  height: 65%;
+  max-height: 1000px;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.subscription-card:hover {
+  transform: scale(1.05);
+  
+  
+  
+}
+.subscription-card:hover > mat-card-header {
+  
+  background-color:#0022ff
+  
+  
+}
+
+mat-card-header {
+  background-color: #162bb9;
+  border-radius: 15px;
+  height: 25%;
+  align-items: center;
+  justify-content: center;
+  margin: 5%;
+}
+
+.price {
+  font-size: 18px;
+  margin-top: 12px;
+}
+
+.subscribe-button {
+  width: 100%;
+  background-color: #1976d298; /* Set your desire
+  border: none; /* Remove button border */
+  border-radius: 8px; /* Rounded corners */
+  padding: 12px 24px; /* Adjust padding as needed */
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.subscribe-button:hover {
+  background-color: #0022ff; /* Change color on hover */
+}
+.button-container {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+}
+
+.populartiy {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: small;
+  font-weight: 30;
+  color: rgba(255, 254, 254, 0.800);
+  padding-bottom: 30%;
+}
+
+.subscription-type {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: large;
+  color: white;
+  font-weight: 300;
+  padding-bottom: 20%;
+
+}
+
+.subscription-price {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: xx-large;
+  color: white;
+  font-weight: 400;
+  padding-bottom: 10%;
+
+}
+
+.card-content {
+  margin: 10px;
+}

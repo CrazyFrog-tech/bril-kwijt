@@ -1,0 +1,27 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<div class="component">
+
+        <div class="user_info">
+            <span>{{ this.channelName }}</span>
+        </div>
+    <div #chat class="card">
+        <!--messages - start> -->
+        <div *ngFor="let msg of currentMessages | async" class="msg_container">
+            <div   class="msg_container_current_user" *ngIf="msg.sender === thisUser!.customerName; else thisUserMsg">
+                    {{ msg.content }}
+                    <span class="msg_time_send">{{ whenWasItPublished(msg.t_stamp) }}</span>
+            </div>
+            <ng-template #thisUserMsg>
+                    <div class="msg_container_sender">
+                        {{ msg.content }}
+                        <span class="msg_time_send">{{ whenWasItPublished(msg.t_stamp) }}</span>
+                    </div>
+            </ng-template>
+            <!--messages - end-->
+        </div>
+        <textarea [formControl]="newMessage" name="" class="type_msg" placeholder="Type your message..."></textarea>
+        <div class="">
+            <span (click)="sendMsg()" class="send_btn"><i class="material-icons">send</i></span>
+        </div>
+    </div>
+</div>

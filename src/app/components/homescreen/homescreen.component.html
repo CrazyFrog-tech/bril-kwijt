@@ -1,0 +1,41 @@
+<div class="backgound">
+  <mat-grid-list cols="1" rowHeight="80%">
+    <mat-grid-tile>
+      <mat-card class="card-content">
+        <mat-card-content>
+            <div class="rows-container">
+                <div class="buttons-container">
+                    <button mat-fab extended (click)="goToBrilGevonden()">
+                        <mat-icon>arrow_right_alt</mat-icon>
+                        Bril gevonden?
+                    </button>
+                    <div class="divider"></div>
+                    <button mat-fab extended class="button" (click)="goToGevondenBrillen()">
+                        <mat-icon>arrow_right_alt</mat-icon>
+                        Bril kwijt?
+                    </button>
+                </div>
+                <div class="login-container">
+                    <button mat-fab extended *ngIf="!(auth.isAuthenticated$ | async)" (click)="login()">
+                        <mat-icon>arrow_right_alt</mat-icon>
+                        Log in/register</button>
+                    <button mat-fab extended *ngIf="(auth.isAuthenticated$ | async ) && !(auth.isLoading$ | async)" (click)="logout()">
+                        <mat-icon>arrow_right_alt</mat-icon>
+                        Log out
+                    </button>
+                </div>
+
+            </div>
+
+
+
+
+        </mat-card-content>
+          <mat-divider ></mat-divider>
+      </mat-card>
+
+    </mat-grid-tile>
+
+
+  </mat-grid-list>
+</div>

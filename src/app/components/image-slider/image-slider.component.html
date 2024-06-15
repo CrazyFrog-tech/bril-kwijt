@@ -1,0 +1,16 @@
+<div class="slider">
+  <div>
+    <ng-template ngFor [ngForOf]="images" let-image let-i="index">
+      <img
+        class="slide slide-animation nonDraggableImage"
+        *ngIf="isCurrentSlideIndex(i)"
+        (swiperight)="nextSlide()"
+        (swipeleft)="prevSlide()"
+        [src]="image"
+      />
+    </ng-template>
+  </div>
+
+  <button class="arrow prev" (click)="nextSlide()"></button>
+  <button class="arrow next" (click)="prevSlide()"></button>
+</div>

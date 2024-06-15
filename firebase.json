@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/bril-kwijt",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
