@@ -32,7 +32,7 @@ import { SubscriptionComponent } from './components/subscription/subscription.co
 import { UploadImagesComponent } from './components/upload-images/upload-images.component';
 import { MaterialModule } from './material-module';
 import { BrilService } from './services/bril.service';
-import { counterReducer } from './store/reducers/counter.redcuer';
+import { counterReducer } from './store/reducers/bril.redcuer';
 
 @NgModule({
     declarations: [

@@ -9,8 +9,8 @@ import { map, Observable, Subscription, switchMap } from 'rxjs';
 import { Bril } from 'src/app/dao/bril';
 import { ApiService } from 'src/app/services/api.service';
 import { CustomerService } from '../../services/customer.service';
-import { selectId } from '../../store/actions/counter.actions';
-import { AppState } from '../../store/reducers/counter.state';
+import { selectId } from '../../store/actions/bril.actions';
+import { AppState } from '../../store/reducers/bril.state';
 
 @Component({
     selector: 'app-bril-advertentie',
