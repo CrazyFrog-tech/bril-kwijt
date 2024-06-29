@@ -13,7 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthModule } from '@auth0/auth0-angular';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from '../environments/environment.prod';
+import { environment } from '../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -32,7 +32,7 @@ import { SubscriptionComponent } from './components/subscription/subscription.co
 import { UploadImagesComponent } from './components/upload-images/upload-images.component';
 import { MaterialModule } from './material-module';
 import { BrilService } from './services/bril.service';
-import { counterReducer } from './store/reducers/counter.redcuer';
+import { counterReducer } from './store/reducers/bril.redcuer';
 
 @NgModule({
     declarations: [

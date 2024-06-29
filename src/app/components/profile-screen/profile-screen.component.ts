@@ -18,9 +18,6 @@ import { AuthService } from '@auth0/auth0-angular';
 export class ProfileScreenComponent {
   constructor(private router: Router, public auth: AuthService, @Inject(DOCUMENT) public document: Document) {
   }
-
-
-
   logout() {
     this.auth.logout({
       logoutParams: {

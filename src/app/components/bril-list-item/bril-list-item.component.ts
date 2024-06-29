@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { BrilListItem } from '../../dao/brilI-list-item';
 import { Router } from '@angular/router';
 import {Store} from "@ngrx/store";
-import {selectId} from "../../store/actions/counter.actions";
+import {selectId} from "../../store/actions/bril.actions";
 @Component({
   selector: 'app-bril-list-item',
   templateUrl: './bril-list-item.component.html',

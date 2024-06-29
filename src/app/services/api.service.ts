@@ -7,6 +7,7 @@ import { Bril } from '../dao/bril';
 export class ApiService {
 
     baseURL: string = 'https://brilkwijtbackend-e47bf8e71893.herokuapp.com/brilkwijt/';
+    // baseURL: string = "http://localhost:8083/brilkwijt/";
 
     constructor(private http: HttpClient) {
     }

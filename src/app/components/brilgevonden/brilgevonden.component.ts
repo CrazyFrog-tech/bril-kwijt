@@ -1,19 +1,20 @@
 import {Component, OnInit} from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Address } from '../../dao/address';
 import { Bril } from '../../dao/bril';
 import { ApiService } from '../../services/api.service';
 import {AuthService} from "@auth0/auth0-angular";
 import {Customer} from "../../dao/customer";
-
+@UntilDestroy()
 @Component({
   selector: 'app-brilgevonden',
   templateUrl: './brilgevonden.component.html',
   styleUrls: ['./brilgevonden.component.css'],
 })
 export class BrilgevondenComponent implements OnInit{
-  displayProgressSpinner: boolean = false;
+  displayProgressSpinner = false;
   selectedFiles: FileList | null = null;
   customer : Customer;
   post: any = '';
@@ -35,7 +36,7 @@ export class BrilgevondenComponent implements OnInit{
   }
 
   ngOnInit(): void {
-        this.authService.user$.subscribe(user =>
+        this.authService.user$.pipe(untilDestroyed(this)).subscribe(user =>
         this.customer = new Customer(user?.name!))
     }
 
@@ -71,7 +72,7 @@ export class BrilgevondenComponent implements OnInit{
     }
     let bril = this.initBril();
     formData.append('bril', JSON.stringify(bril));
-    this.apiService.addFakeBril(formData).subscribe({
+    this.apiService.addFakeBril(formData).pipe(untilDestroyed(this)).subscribe({
       next: (value) => {
         this.displayProgressSpinner = true;
         this.router.navigate(['/homescreen']);

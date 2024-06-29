@@ -9,15 +9,7 @@ import { SafeUrl } from '@angular/platform-browser';
 export class ImageSliderComponent {
   @Input() images: SafeUrl[] = [];
   currentIndex = 0;
-
-
   constructor() {
-  }
-
-  
-
-  setCurrentSlideIndex(index: number) {
-    this.currentIndex = index;
   }
 
   isCurrentSlideIndex(index: number) {
