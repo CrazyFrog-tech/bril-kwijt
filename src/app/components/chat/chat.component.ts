@@ -3,6 +3,7 @@ import { AfterViewChecked, Component, ElementRef, OnDestroy, OnInit, ViewChild }
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Store } from '@ngrx/store';
 import { Client, Stomp } from '@stomp/stompjs';
 import { Observable, of, Subscription } from 'rxjs';
@@ -11,6 +12,7 @@ import { Customer } from '../../dao/customer';
 import { Message } from '../../dao/message';
 import { CustomerService } from '../../services/customer.service';
 
+@UntilDestroy()
 @Component({
     selector: 'app-chat',
     templateUrl: './chat.component.html',
@@ -40,7 +42,7 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
     }
 
     ngOnInit(): void {
-        this.auth.user$.subscribe(user => {
+        this.auth.user$.pipe(untilDestroyed(this)).subscribe(user => {
             this.thisUser.customerName = user?.email!;
             this.customerService.loggedInCustomerName$.subscribe(name => {
                 this.otherUser.customerName = name;
@@ -56,7 +58,6 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
         if (this.stompClient) {
             this.stompClient.deactivate();
         }
-        this.subscriptions.unsubscribe();
     }
 
     ngAfterViewChecked(): void {
@@ -90,12 +91,10 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
         this.stompClient = Stomp.over(() => new SockJS(this.url + '/websocket'));
         this.stompClient.onConnect = (frame) => {
             // what to do when connection is established
-            console.log('connected to: ' + frame);
             if (this.stompClient) {
                 this.subscriptions.add(this.stompClient.subscribe(
                     '/topic/messages/' + this.channelName,
                     (response) => {
-                        console.log(response, 'in topic messages');
                         //what to do when client receives data (messages)
                         this.loadChat();
                     }
@@ -104,7 +103,6 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
         };
         // Handle errors
         this.stompClient.onStompError = (frame) => {
-            console.error('Stomp error:', frame);
         };
         this.stompClient.activate();
     }
@@ -129,7 +127,7 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
 
     loadChat() {
         this.messages = this.http.post<Array<Message>>(this.url + '/getMessages', this.channelName);
-        this.subscriptions.add(this.messages.subscribe(data => {
+        this.subscriptions.add(this.messages.pipe(untilDestroyed(this)).subscribe(data => {
             let mgs: Array<Message> = data;
             mgs.sort((a, b) => (a.ms_id > b.ms_id) ? -1 : 1);
             this.currentMessages = of(mgs);

@@ -1,10 +1,11 @@
 import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { BehaviorSubject, catchError, forkJoin, map, switchMap, tap, throwError } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';
 import { BrilListItem } from '../../dao/brilI-list-item';
-
+@UntilDestroy()
 @Component({
     selector: 'app-gevonden-brillen',
     templateUrl: './brillen-lijst.component.html',
@@ -43,7 +44,8 @@ export class brillenLijstComponent implements OnInit {
             catchError((error) => {
                 this.isLoadingBrillen.next(false);
                 return throwError(() => error);
-            })
+            }),
+            untilDestroyed(this)
         ).subscribe();
     }
 

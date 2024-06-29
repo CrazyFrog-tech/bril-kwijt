@@ -1,11 +1,12 @@
 import {Component, OnInit} from '@angular/core';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { tap } from 'rxjs';
 import {ApiService} from "../../services/api.service";
 import {AppState} from "../../store/reducers/counter.state";
 import {Store} from "@ngrx/store";
 import {selectChat, selectId} from "../../store/actions/counter.actions";
 import {Router} from "@angular/router";
-
+@UntilDestroy()
 @Component({
   selector: 'app-chats-screen',
   templateUrl: './chats-screen.component.html',
@@ -18,7 +19,7 @@ export class ChatsScreenComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.apiService.getAllChats().subscribe(  {
+    this.apiService.getAllChats().pipe(untilDestroyed(this)).subscribe(  {
       next: (chats) => {
         this.chats = chats;
         console.log(...chats)

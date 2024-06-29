@@ -2,8 +2,9 @@ import {Component, Inject} from '@angular/core';
 import { Router } from '@angular/router';
 import {AuthService} from "@auth0/auth0-angular";
 import {DOCUMENT} from "@angular/common";
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
-
+@UntilDestroy()
 @Component({
   selector: 'app-homescreen',
   templateUrl: './homescreen.component.html',
@@ -15,7 +16,7 @@ export class HomescreenComponent {
 
   }
   ngOnInit(): void {
-    this.auth.isAuthenticated$.subscribe(
+    this.auth.isAuthenticated$.pipe(untilDestroyed(this)).subscribe(
       value => console.log('Authentication Status:', value),
       error => console.error('Error:', error),
       () => console.log('Observable completed')
