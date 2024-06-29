@@ -10,6 +10,11 @@ export class Bril {
     public color?: string,
     public brand?: string,
     public customer?: Customer,
-    public imageFilenames?: string[],
+    public imageBlobIds?: string[],
   ) { }
+}
+export interface BlobId {
+  bucket: string;
+  name: string;
+  generation?: number;
 }
