@@ -14,7 +14,7 @@ import {Customer} from "../../dao/customer";
   styleUrls: ['./brilgevonden.component.css'],
 })
 export class BrilgevondenComponent implements OnInit{
-  displayProgressSpinner: boolean = false;
+  displayProgressSpinner = false;
   selectedFiles: FileList | null = null;
   customer : Customer;
   post: any = '';
