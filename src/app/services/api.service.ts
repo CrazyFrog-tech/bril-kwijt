@@ -6,8 +6,8 @@ import { Bril } from '../dao/bril';
 @Injectable({ providedIn: 'root' })
 export class ApiService {
 
-    // baseURL: string = 'https://brilkwijtbackend-e47bf8e71893.herokuapp.com/brilkwijt/';
-    baseURL: string = "http://localhost:8083/brilkwijt/";
+    baseURL: string = 'https://brilkwijtbackend-e47bf8e71893.herokuapp.com/brilkwijt/';
+    // baseURL: string = "http://localhost:8083/brilkwijt/";
 
     constructor(private http: HttpClient) {
     }
