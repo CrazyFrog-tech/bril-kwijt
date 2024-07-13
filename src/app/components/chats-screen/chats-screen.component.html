@@ -1,3 +1,7 @@
-<mat-nav-list class="container"  *ngFor="let chat of chats" role="list">
-  <mat-list-item (click)="goToTheChat(chat.name)">{{chat.name}}</mat-list-item>
+<mat-nav-list class="container" role="list">
+    <mat-list-item *ngFor="let chat of chats" (click)="goToTheChat(chat.name)" class="chat-item">
+        <!-- Replace 'chatIcon' with an appropriate icon name -->
+        <mat-icon class="chat-icon">chat</mat-icon>
+        <span class="chat-name">{{ chat.name }}</span>
+    </mat-list-item>
 </mat-nav-list>
