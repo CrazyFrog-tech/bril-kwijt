@@ -3,6 +3,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { select, Store } from '@ngrx/store';
 
 import { map, Observable, Subscription, switchMap, tap } from 'rxjs';
@@ -11,7 +12,7 @@ import { ApiService } from 'src/app/services/api.service';
 import { CustomerService } from '../../services/customer.service';
 import { selectAdId } from '../../store/actions/bril.actions';
 import { AppState } from '../../store/reducers/bril.state';
-
+@UntilDestroy()
 @Component({
     selector: 'app-bril-advertentie',
     templateUrl: './bril-advertentie.component.html',
@@ -70,7 +71,8 @@ export class BrilAdvertentieComponent implements OnInit, OnDestroy {
                         if(this.bril.customer?.customerName! !== user?.name){
                             this.customerService.setCustomerName(this.bril.customer?.customerName!);
                         }
-                    })
+                    }),
+                    untilDestroyed(this)
                 ).subscribe();
                 this.loadBrilImages(bril.imageBlobIds);
             })
@@ -89,7 +91,8 @@ export class BrilAdvertentieComponent implements OnInit, OnDestroy {
                             const blob = new Blob([imageBlob], { type: 'application/image' });
                             const unsafeImg = URL.createObjectURL(blob);
                             return this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
-                        })
+                        }),
+                        untilDestroyed(this)
                     )
                     .subscribe((safeImage) => {
                         this.images.push(safeImage);

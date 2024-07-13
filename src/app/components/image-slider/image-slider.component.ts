@@ -9,6 +9,8 @@ import { SafeUrl } from '@angular/platform-browser';
 export class ImageSliderComponent {
   @Input() images: SafeUrl[] = [];
   currentIndex = 0;
+  isImageLoading = true; // Add this line
+
   constructor() {
   }
 
