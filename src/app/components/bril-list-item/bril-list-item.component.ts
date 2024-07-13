@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { BrilListItem } from '../../dao/brilI-list-item';
 import { Router } from '@angular/router';
 import {Store} from "@ngrx/store";
-import {selectId} from "../../store/actions/bril.actions";
+import {selectAdId} from "../../store/actions/bril.actions";
 @Component({
   selector: 'app-bril-list-item',
   templateUrl: './bril-list-item.component.html',
@@ -17,7 +17,7 @@ export class BrilListItemComponent implements OnInit{
 
 
   onListItemClicked() {
-    this.store.dispatch(selectId({id: this.brilListItem.id}));
+    this.store.dispatch(selectAdId({id: this.brilListItem.id}));
     sessionStorage.setItem('selectedId', this.brilListItem.id);
 
 

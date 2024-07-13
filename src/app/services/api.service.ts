@@ -1,13 +1,14 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 import { Bril } from '../dao/bril';
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
 
-    baseURL: string = 'https://brilkwijtbackend-e47bf8e71893.herokuapp.com/brilkwijt/';
-    // baseURL: string = "http://localhost:8083/brilkwijt/";
+    // baseURL: string = 'https://brilkwijtbackend-e47bf8e71893.herokuapp.com/brilkwijt/';
+    baseURL: string = environment.apiURL + '/';
 
     constructor(private http: HttpClient) {
     }

@@ -1,10 +1,10 @@
 import {createReducer, on} from '@ngrx/store';
-import {reset, selectChat, selectId} from '../actions/bril.actions';
+import {reset, selectChat, selectAdId} from '../actions/bril.actions';
 import {initialState} from "./bril.state";
 
 export const counterReducer = createReducer(
   initialState,
-  on(selectId, (state, {id}) => {
+  on(selectAdId, (state, {id}) => {
     return {
       brilState: {
         ...state.brilState,
