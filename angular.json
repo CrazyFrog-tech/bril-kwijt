@@ -37,28 +37,26 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "100mb",
-                  "maximumError": "100mb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "6mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "100mb",
-                  "maximumError": "100mb"
+                  "maximumWarning": "6kb"
                 }
-              ],
-              "outputHashing": "all"
+              ]
             },
-            "development": {
-              "buildOptimizer": false,
-              "optimization": false,
-              "vendorChunk": true,
-              "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true
-            }
+            "development": {}
           },
           "defaultConfiguration": "production"
         },
