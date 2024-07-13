@@ -1,4 +1,7 @@
 <mat-toolbar color="primary" class="app-bar">
+    <button mat-icon-button (click)="goToHomeScreen()">
+        <mat-icon>home</mat-icon>
+    </button>
   <button mat-icon-button *ngIf="isLoggedIn | async" (click)="goToProfileScreen()">
     <!-- Add your profile avatar here -->
     <mat-icon>account_circle</mat-icon>

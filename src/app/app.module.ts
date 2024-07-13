@@ -28,6 +28,7 @@ import { LoadingSpinnerComponent } from './components/loading-spinner/loading-sp
 import { ChatsScreenComponent } from './components/chats-screen/chats-screen.component';
 import { HomescreenComponent } from './components/homescreen/homescreen.component';
 import { ImageSliderComponent } from './components/image-slider/image-slider.component';
+import { SplashComponent } from './components/splash/splash.component';
 import { SubscriptionComponent } from './components/subscription/subscription.component';
 import { UploadImagesComponent } from './components/upload-images/upload-images.component';
 import { MaterialModule } from './material-module';
@@ -49,6 +50,7 @@ import { counterReducer } from './store/reducers/bril.redcuer';
         ChatComponent,
         AppBarComponent,
         ChatsScreenComponent,
+        SplashComponent,
 
     ],
     imports: [

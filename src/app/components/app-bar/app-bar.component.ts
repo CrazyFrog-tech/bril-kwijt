@@ -19,9 +19,8 @@ export class AppBarComponent {
     this.router.navigate(['/profilescreen']);
   }
 
+  goToHomeScreen() {
+    this.router.navigate(['/homescreen']);
 
-
-
-
-
+  }
 }
