@@ -5,11 +5,11 @@ import { Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
 import { select, Store } from '@ngrx/store';
 
-import { map, Observable, Subscription, switchMap } from 'rxjs';
+import { map, Observable, Subscription, switchMap, tap } from 'rxjs';
 import { Bril } from 'src/app/dao/bril';
 import { ApiService } from 'src/app/services/api.service';
 import { CustomerService } from '../../services/customer.service';
-import { selectId } from '../../store/actions/bril.actions';
+import { selectAdId } from '../../store/actions/bril.actions';
 import { AppState } from '../../store/reducers/bril.state';
 
 @Component({
@@ -53,7 +53,7 @@ export class BrilAdvertentieComponent implements OnInit, OnDestroy {
     private retrieveSelectedIdFromLocalStorage(): void {
         const savedId = sessionStorage.getItem('selectedId');
         if (savedId) {
-            this.store.dispatch(selectId({ id: savedId }));
+            this.store.dispatch(selectAdId({ id: savedId }));
         }
     }
 
@@ -65,7 +65,13 @@ export class BrilAdvertentieComponent implements OnInit, OnDestroy {
             ).subscribe((bril) => {
                 this.bril = bril;
                 this.isUserOwner$ = this.checkUserIsOwner(bril);
-                this.customerService.setCustomerName(bril.customer?.customerName!);
+                this.authService.user$.pipe(
+                    tap((user) => {
+                        if(this.bril.customer?.customerName! !== user?.name){
+                            this.customerService.setCustomerName(this.bril.customer?.customerName!);
+                        }
+                    })
+                ).subscribe();
                 this.loadBrilImages(bril.imageBlobIds);
             })
         );

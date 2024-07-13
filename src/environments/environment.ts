@@ -7,8 +7,8 @@ import 'zone.js/plugins/zone-error'; // Included with Angular CLI.
 export const environment = {
   production: false,
   storeDevTools: true,
-    // redirect_uri: 'http://localhost:4200/homescreen',
-    redirect_uri: 'https://bril-kwijt-fe.web.app/homescreen',
-
+  redirect_uri: 'http://localhost:4200/homescreen',
+  apiURL: 'http://localhost:8083/brilkwijt',
+  chatURL: '/brilkwijt',
 };
 

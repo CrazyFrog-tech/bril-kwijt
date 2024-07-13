@@ -1,13 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { AfterViewChecked, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Store } from '@ngrx/store';
 import { Client, Stomp } from '@stomp/stompjs';
 import { Observable, of, Subscription } from 'rxjs';
 import * as SockJS from 'sockjs-client';
+import { environment } from '../../../environments/environment';
 import { Customer } from '../../dao/customer';
 import { Message } from '../../dao/message';
 import { CustomerService } from '../../services/customer.service';
@@ -21,7 +21,7 @@ import { CustomerService } from '../../services/customer.service';
 export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
     @ViewChild('chat') chat: ElementRef;
 
-    url: string = '/brilkwijt';
+    url: string = environment.apiURL;
     otherUser = new Customer('');
     thisUser = new Customer('');
     channelName?: string;
@@ -44,10 +44,11 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
     ngOnInit(): void {
         this.auth.user$.pipe(untilDestroyed(this)).subscribe(user => {
             this.thisUser.customerName = user?.email!;
-            this.customerService.loggedInCustomerName$.subscribe(name => {
+            this.customerService.otherCustomerName$.subscribe(name => {
+                console.log('other customer name: ' + name);
                 this.otherUser.customerName = name;
                 this.connectToChat();
-                this.el.nativeElement.querySelector('#chat').scrollIntoView();
+                this.el.nativeElement.querySelector('#chat')?.scrollIntoView();
             });
         });
 
@@ -61,7 +62,9 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
     }
 
     ngAfterViewChecked(): void {
-        this.scrollDown();
+        if (this.chat.nativeElement) {
+            this.scrollDown();
+        }
     }
 
     scrollDown() {
@@ -71,22 +74,7 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
     connectToChat() {
         const firstUserName = this.thisUser.customerName;
         const secondUserName = this.otherUser?.customerName!;
-
-        // if (id1 > id2) {
-        if (firstUserName && secondUserName) {
-            this.channelName = firstUserName + '&' + secondUserName;
-            sessionStorage.setItem('chatName', this.channelName);
-        } else {
-            this.store.select((state: any) => state.brilState.brilState.chatMessageName).subscribe(
-                (chatMessageName) => {
-                    if (chatMessageName) {
-                        this.channelName = chatMessageName;
-                    }else{
-                        this.channelName = sessionStorage.getItem('chatName');
-                    }
-                }
-            );
-        }
+        this.setChannelName(firstUserName, secondUserName);
         this.loadChat();
         this.stompClient = Stomp.over(() => new SockJS(this.url + '/websocket'));
         this.stompClient.onConnect = (frame) => {
@@ -105,6 +93,24 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
         this.stompClient.onStompError = (frame) => {
         };
         this.stompClient.activate();
+    }
+
+    setChannelName(firstUserName: string, secondUserName: string) {
+        this.channelName = firstUserName && secondUserName
+            ? firstUserName + '&' + secondUserName
+            : this.getChannelNameFromStoreOrSession();
+
+        sessionStorage.setItem('chatName', this.channelName);
+    }
+
+    getChannelNameFromStoreOrSession(): string {
+        let channelName = sessionStorage.getItem('chatName');
+        this.store.select((state: any) => state.brilState.brilState.chatMessageName).subscribe(
+            (chatMessageName) => {
+                channelName = chatMessageName || channelName;
+            }
+        );
+        return channelName;
     }
 
     sendMsg() {
