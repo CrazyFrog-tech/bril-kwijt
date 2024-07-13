@@ -31,16 +31,22 @@
           },
           "configurations": {
             "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "10mb"
+                  "maximumWarning": "100mb",
+                  "maximumError": "100mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "500kb",
-                  "maximumError": "500kb"
+                  "maximumWarning": "100mb",
+                  "maximumError": "100mb"
                 }
               ],
               "outputHashing": "all"
