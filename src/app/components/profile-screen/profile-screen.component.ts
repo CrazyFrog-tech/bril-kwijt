@@ -21,13 +21,12 @@ export class ProfileScreenComponent {
   logout() {
     this.auth.logout({
       logoutParams: {
-        returnTo: this.document.location.origin
+        returnTo: this.document.location.origin + '/homescreen'
       }
     });
   }
 
   goToHomePage() {
     this.router.navigate(['/homescreen']);
-
   }
 }
