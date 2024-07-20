@@ -1,5 +1,5 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-<div class="component" *ngIf="(currentMessages | async).length > 0 ; else noChatsTemplate">
+<div class="component">
 
         <div class="user_info">
             <span>{{ this.channelName }}</span>
@@ -25,8 +25,3 @@
         </div>
     </div>
 </div>
-<ng-template #noChatsTemplate>
-    <div class="no_chats">
-        <span>No chats available</span>
-    </div>
-</ng-template>
