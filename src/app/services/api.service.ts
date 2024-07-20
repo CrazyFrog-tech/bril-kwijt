@@ -31,8 +31,8 @@ export class ApiService {
         return this.http.post<FormData>(this.baseURL + 'description', fakebril);
     }
 
-    getAllChats(): Observable<any> {
-        return this.http.get(this.baseURL + 'getChats');
+    getAllChatsForUser(customerName: String): Observable<any> {
+        return this.http.post(this.baseURL + 'getChatsForCustomer', customerName);
 
     }
 
